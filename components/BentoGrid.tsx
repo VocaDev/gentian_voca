@@ -28,7 +28,7 @@ export function BentoGrid() {
             title="Sales Prediction ML Engine"
             description="Engineered a predictive pipeline using Kaggle datasets, focusing on feature engineering and noise reduction to forecast e-commerce trends. Achieved 89% accuracy through systematic data cleaning and hyperparameter optimization."
             icon={BarChart3}
-            techStack={['Python', 'Scikit-Learn', 'Pandas', 'Kaggle API']}
+            techStack={['Python', 'Scikit-Learn', 'Pandas', 'Kaggle']}
             githubUrl="https://github.com/VocaDev/DataCleaningExercises"
             accentColor="emerald"
             featured
@@ -63,6 +63,15 @@ export function BentoGrid() {
 
           {/* Regular projects */}
           <ProjectCard
+            title="VocaFolders Browser Extension"
+            description="Save and organize websites into folders — clean, fast, and private."
+            icon={Code2}
+            techStack={['Browser Extension', 'Productivity', 'Privacy-First']}
+            githubUrl="https://github.com/VocaDev/VocaFolders_Browser_Extension/tree/main"
+            accentColor="cyan"
+          />
+
+          <ProjectCard
             title="Barbershop Web UI"
             description="Crafted with React and Tailwind CSS, delivering a seamless booking experience with real-time updates, smooth animations, and a responsive design."
             icon={Code2}
@@ -75,7 +84,7 @@ export function BentoGrid() {
             title="E-commerce Backend"
             description="Built a robust inventory management system with relational data integrity, transaction handling, and API endpoints for full product catalog management."
             icon={Database}
-            techStack={['Python', 'SQL', 'REST API']}
+            techStack={['C#', '.NET', 'OOP']}
             githubUrl="https://github.com/VocaDev/E-commerce-Application"
             accentColor="amber"
           />
@@ -84,7 +93,7 @@ export function BentoGrid() {
             title="Data Engineering Internship"
             description="Currently focused on automated data cleaning, SQL optimization, and transforming raw data into business intelligence. Building ETL pipelines that process millions of records daily."
             icon={Zap}
-            techStack={['SQL', 'Python', 'ETL', 'Data Warehousing']}
+            techStack={['SQL', 'Python', 'ETL']}
             githubUrl="https://github.com/VocaDev/Data-Engineering-Internship-Project"
             accentColor="violet"
           >
