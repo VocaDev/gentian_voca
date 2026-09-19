@@ -1,39 +1,115 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { site } from "@/content/site";
 
-const inter = Inter({ subsets: ['latin'] });
+const geist = Geist({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-geist-sans",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-geist-mono",
+  display: "swap",
+  weight: ["400"],
+});
+
+const title = `${site.name} · Software developer, Mitrovicë`;
 
 export const metadata: Metadata = {
-  title: 'Voca — Data Engineering Portfolio',
-  description: 'Data Engineering Intern specializing in ETL pipelines, ML models, and full-stack development. 2nd year CS student building systems that turn raw data into business intelligence.',
-  keywords: ['Data Engineering', 'Machine Learning', 'ETL', 'Python', 'SQL', 'Data Science', 'Portfolio', 'Software Developer'],
-  authors: [{ name: 'Voca' }],
+  metadataBase: new URL(site.url),
+  title: {
+    default: title,
+    template: `%s · ${site.name}`,
+  },
+  description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  keywords: [
+    "Gentian Voca",
+    "software developer Kosovo",
+    "full-stack developer Mitrovicë",
+    "Next.js developer",
+    "TypeScript",
+    "Supabase",
+    "web developer for small businesses",
+  ],
   openGraph: {
-    title: 'Voca — Data Engineering Portfolio',
-    description: 'Cleaning the noise. Predicting the future. Data Engineer available for hire.',
-    type: 'website',
-    locale: 'en_US',
-    // TODO: Replace with your own OG image (upload to /public/og-image.png)
-    // For now removed the bolt.new placeholder
+    type: "website",
+    siteName: site.name,
+    url: site.url,
+    title,
+    description: site.description,
+    locale: "en_GB",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Voca — Data Engineering Portfolio',
-    description: 'Cleaning the noise. Predicting the future. Data Engineer available for hire.',
-    // TODO: Replace with your own OG image
+    card: "summary_large_image",
+    title,
+    description: site.description,
   },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5f3ee" },
+    { media: "(prefers-color-scheme: dark)", color: "#121316" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${site.url}/#person`,
+      name: site.name,
+      jobTitle: "Software developer",
+      url: site.url,
+      email: `mailto:${site.email}`,
+      image: `${site.url}/opengraph-image`,
+      address: { "@type": "PostalAddress", addressLocality: "Mitrovicë", addressCountry: "XK" },
+      sameAs: [site.links.linkedin, site.links.github],
+      worksFor: { "@type": "Organization", name: "Petrol Company" },
+      alumniOf: { "@type": "CollegeOrUniversity", name: 'University of Mitrovica "Isa Boletini"' },
+      knowsLanguage: ["sq", "en"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      publisher: { "@id": `${site.url}/#person` },
+      inLanguage: "en",
+    },
+  ],
+};
+
+// The only joke on load. For the people who open the console.
+const consoleNote =
+  'console.log("%cNice. Most people don\'t look.","font:14px/1.4 Geist,ui-sans-serif,system-ui;color:#3d5a73")';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-zinc-950 text-zinc-50 antialiased`}>
-        {children}
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+      <body>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        <Header />
+        <main id="main" className="animate-fade-in">
+          {children}
+        </main>
+        <Footer />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script dangerouslySetInnerHTML={{ __html: consoleNote }} />
       </body>
     </html>
   );

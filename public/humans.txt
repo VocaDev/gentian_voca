@@ -1,0 +1,16 @@
+/* TEAM */
+Developer, designer, writer: Gentian Voca
+Location: Mitrovicë, Kosovo
+Contact: gentianvoca@gmail.com
+LinkedIn: linkedin.com/in/gentianvoca
+GitHub: github.com/VocaDev
+
+/* SITE */
+Rebuilt: September 2026, after a long think and a short build.
+Stack: Next.js, TypeScript, Tailwind CSS. No template.
+Type: Geist and Geist Mono.
+Glass: one control. That was the rule.
+Screenshots: real, same viewport, nothing retouched.
+
+/* THANKS */
+Faleminderit që lexuat deri këtu.
