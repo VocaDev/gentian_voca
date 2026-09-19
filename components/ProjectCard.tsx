@@ -1,87 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { LucideIcon, ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { LucideIcon, Github, ArrowUpRight, Lock } from 'lucide-react';
 import { ReactNode } from 'react';
-
-type AccentColor = 'emerald' | 'cyan' | 'amber' | 'violet';
-
-const accentStyles: Record<AccentColor, {
-  border: string;
-  borderHover: string;
-  bg: string;
-  bgHover: string;
-  text: string;
-  glow: string;
-  gradient: string;
-  strip: string;
-  iconBg: string;
-  iconBgHover: string;
-  tagBg: string;
-  tagBorder: string;
-  tagText: string;
-}> = {
-  emerald: {
-    border: 'border-emerald-500/20',
-    borderHover: 'group-hover:border-emerald-500/40',
-    bg: 'bg-emerald-500/5',
-    bgHover: 'group-hover:bg-emerald-500/[0.07]',
-    text: 'text-emerald-400',
-    glow: 'group-hover:shadow-emerald-500/10',
-    gradient: 'from-emerald-500/10 via-transparent to-transparent',
-    strip: 'bg-gradient-to-b from-emerald-400 to-emerald-600',
-    iconBg: 'bg-emerald-500/10 border-emerald-500/20',
-    iconBgHover: 'group-hover:bg-emerald-500/20',
-    tagBg: 'bg-emerald-500/5',
-    tagBorder: 'border-emerald-500/15',
-    tagText: 'text-emerald-400/80',
-  },
-  cyan: {
-    border: 'border-cyan-500/20',
-    borderHover: 'group-hover:border-cyan-500/40',
-    bg: 'bg-cyan-500/5',
-    bgHover: 'group-hover:bg-cyan-500/[0.07]',
-    text: 'text-cyan-400',
-    glow: 'group-hover:shadow-cyan-500/10',
-    gradient: 'from-cyan-500/10 via-transparent to-transparent',
-    strip: 'bg-gradient-to-b from-cyan-400 to-cyan-600',
-    iconBg: 'bg-cyan-500/10 border-cyan-500/20',
-    iconBgHover: 'group-hover:bg-cyan-500/20',
-    tagBg: 'bg-cyan-500/5',
-    tagBorder: 'border-cyan-500/15',
-    tagText: 'text-cyan-400/80',
-  },
-  amber: {
-    border: 'border-amber-500/20',
-    borderHover: 'group-hover:border-amber-500/40',
-    bg: 'bg-amber-500/5',
-    bgHover: 'group-hover:bg-amber-500/[0.07]',
-    text: 'text-amber-400',
-    glow: 'group-hover:shadow-amber-500/10',
-    gradient: 'from-amber-500/10 via-transparent to-transparent',
-    strip: 'bg-gradient-to-b from-amber-400 to-amber-600',
-    iconBg: 'bg-amber-500/10 border-amber-500/20',
-    iconBgHover: 'group-hover:bg-amber-500/20',
-    tagBg: 'bg-amber-500/5',
-    tagBorder: 'border-amber-500/15',
-    tagText: 'text-amber-400/80',
-  },
-  violet: {
-    border: 'border-violet-500/20',
-    borderHover: 'group-hover:border-violet-500/40',
-    bg: 'bg-violet-500/5',
-    bgHover: 'group-hover:bg-violet-500/[0.07]',
-    text: 'text-violet-400',
-    glow: 'group-hover:shadow-violet-500/10',
-    gradient: 'from-violet-500/10 via-transparent to-transparent',
-    strip: 'bg-gradient-to-b from-violet-400 to-violet-600',
-    iconBg: 'bg-violet-500/10 border-violet-500/20',
-    iconBgHover: 'group-hover:bg-violet-500/20',
-    tagBg: 'bg-violet-500/5',
-    tagBorder: 'border-violet-500/15',
-    tagText: 'text-violet-400/80',
-  },
-};
 
 interface ProjectCardProps {
   title: string;
@@ -92,9 +13,19 @@ interface ProjectCardProps {
   techStack?: string[];
   liveUrl?: string;
   githubUrl?: string;
-  accentColor?: AccentColor;
   featured?: boolean;
+  status?: 'shipped' | 'building' | 'confidential';
+  year?: string;
+  locked?: boolean;
+  quote?: string;
+  quoteAuthor?: string;
 }
+
+const statusStyle: Record<NonNullable<ProjectCardProps['status']>, { label: string; className: string }> = {
+  shipped: { label: 'Shipped', className: 'bg-accent/10 text-accent border-accent/25' },
+  building: { label: 'In build', className: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/25' },
+  confidential: { label: 'Confidential', className: 'bg-muted text-muted-foreground border-border' },
+};
 
 export function ProjectCard({
   title,
@@ -105,73 +36,71 @@ export function ProjectCard({
   techStack = [],
   liveUrl,
   githubUrl,
-  accentColor = 'emerald',
   featured = false,
+  status,
+  year,
+  locked = false,
+  quote,
+  quoteAuthor,
 }: ProjectCardProps) {
-  const accent = accentStyles[accentColor];
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6 }}
-      whileHover={{ y: -6 }}
-      className={`${className}`}
+      whileHover={{ y: -4 }}
+      className={className}
     >
-      <div className={`relative group overflow-hidden rounded-2xl border ${accent.border} ${accent.borderHover} ${accent.bgHover} transition-all duration-500 hover:shadow-2xl ${accent.glow}`}>
-        {/* Left accent strip */}
-        <div className={`absolute left-0 top-0 bottom-0 w-1 ${accent.strip} opacity-60 group-hover:opacity-100 transition-opacity duration-500`} />
-
+      <div
+        className={`relative group h-full overflow-hidden rounded-2xl border border-border bg-card hover:border-accent/30 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/[0.05] ${
+          featured ? 'p-8 md:p-10' : 'p-6 md:p-7'
+        }`}
+      >
         {/* Hover gradient overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-r ${accent.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.04] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         {/* Content */}
-        <div className={`relative ${featured ? 'p-8 md:p-10' : 'p-6 md:p-8'} pl-8 md:pl-10`}>
-          <div className="flex flex-col md:flex-row md:items-start gap-6">
-            {/* Left: Icon */}
-            <div className={`p-3 rounded-xl border ${accent.iconBg} ${accent.iconBgHover} transition-colors duration-300 flex-shrink-0 self-start`}>
-              <Icon className={`${featured ? 'w-7 h-7' : 'w-6 h-6'} ${accent.text}`} />
-            </div>
-
-            {/* Center: Text content */}
-            <div className="flex-1 min-w-0 space-y-4">
-              <div>
-                <h3 className={`${featured ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'} font-bold text-zinc-50 mb-2`}>
-                  {title}
-                </h3>
-                <p className="text-sm md:text-base text-zinc-400 leading-relaxed">
-                  {description}
-                </p>
+        <div className="relative flex flex-col h-full">
+          {/* Header */}
+          <div className="flex items-start justify-between gap-4 mb-5">
+            <div className="flex items-center gap-3">
+              <div className="p-2.5 rounded-xl border border-accent/25 bg-accent/[0.06] transition-colors duration-300 group-hover:bg-accent/10">
+                <Icon className={`${featured ? 'w-6 h-6' : 'w-5 h-5'} text-accent`} />
               </div>
-
-              {/* Tech stack */}
-              {techStack.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {techStack.map((tech) => (
+              {(status || year) && (
+                <div className="flex items-center gap-2">
+                  {status && (
                     <span
-                      key={tech}
-                      className={`px-3 py-1 text-xs rounded-full ${accent.tagBg} ${accent.tagText} border ${accent.tagBorder} font-medium`}
+                      className={`px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider rounded-full border ${statusStyle[status].className}`}
                     >
-                      {tech}
+                      {statusStyle[status].label}
                     </span>
-                  ))}
+                  )}
+                  {year && (
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">
+                      {year}
+                    </span>
+                  )}
                 </div>
               )}
-
-              {/* Extra children content (e.g. stats bars) */}
-              {children && <div className="pt-2">{children}</div>}
             </div>
 
-            {/* Right: Links */}
-            <div className="flex md:flex-col items-center gap-2 flex-shrink-0 self-start">
+            {/* Links */}
+            <div className="flex items-center gap-1.5">
+              {locked && (
+                <div className="p-2 rounded-lg text-muted-foreground/60" title="Under NDA. Reach out for a walkthrough.">
+                  <Lock className="w-4 h-4" />
+                </div>
+              )}
               {githubUrl && (
                 <a
                   href={githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2.5 rounded-xl border border-zinc-800 text-zinc-500 hover:${accent.text} hover:border-zinc-600 hover:bg-zinc-800/50 transition-all duration-200`}
+                  className="p-2 rounded-lg border border-border text-muted-foreground hover:text-accent hover:border-accent/40 hover:bg-accent/5 transition-all duration-200"
                   aria-label={`${title} GitHub repository`}
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <Github className="w-4 h-4" />
                 </a>
@@ -181,14 +110,56 @@ export function ProjectCard({
                   href={liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2.5 rounded-xl border border-zinc-800 text-zinc-500 hover:${accent.text} hover:border-zinc-600 hover:bg-zinc-800/50 transition-all duration-200`}
+                  className="p-2 rounded-lg border border-border text-muted-foreground hover:text-accent hover:border-accent/40 hover:bg-accent/5 transition-all duration-200"
                   aria-label={`${title} live demo`}
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
               )}
             </div>
           </div>
+
+          {/* Title + description */}
+          <div className="flex-1 space-y-3">
+            <h3
+              className={`${
+                featured ? 'text-2xl md:text-3xl' : 'text-lg md:text-xl'
+              } font-bold text-foreground leading-tight`}
+            >
+              {title}
+            </h3>
+            <p className={`text-sm ${featured ? 'md:text-base' : ''} text-muted-foreground leading-relaxed`}>
+              {description}
+            </p>
+            {quote && (
+              <figure className="pt-1">
+                <blockquote className="border-l-2 border-accent/40 pl-4 text-sm text-foreground/80 italic leading-relaxed">
+                  &ldquo;{quote}&rdquo;
+                </blockquote>
+                {quoteAuthor && (
+                  <figcaption className="pl-4 pt-2 text-[11px] font-mono uppercase tracking-wider text-muted-foreground not-italic">
+                    {quoteAuthor}
+                  </figcaption>
+                )}
+              </figure>
+            )}
+            {children && <div className="pt-1">{children}</div>}
+          </div>
+
+          {/* Tech stack */}
+          {techStack.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 pt-5 mt-5 border-t border-border/60">
+              {techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2 py-0.5 text-[11px] rounded-md font-mono text-muted-foreground bg-secondary/50 border border-border/60"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </motion.div>

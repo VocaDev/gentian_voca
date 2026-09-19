@@ -1,13 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import {
-  Database,
-  BarChart3,
-} from 'lucide-react';
+import { Database, Wrench, Palette, Braces, LineChart, Boxes } from 'lucide-react';
 import {
   SiPython,
   SiReact,
+  SiNextdotjs,
   SiJavascript,
   SiTypescript,
   SiHtml5,
@@ -15,86 +13,134 @@ import {
   SiPandas,
   SiNumpy,
   SiScikitlearn,
-  SiPlotly,
   SiGit,
   SiPostgresql,
-  SiDocker,
   SiDotnet,
+  SiTailwindcss,
+  SiShadcnui,
+  SiBootstrap,
+  SiSupabase,
+  SiVercel,
+  SiNodedotjs,
+  SiJupyter,
 } from 'react-icons/si';
 import { VscCode } from 'react-icons/vsc';
 import { SkillIcon } from './SkillIcon';
 
 const skillCategories = [
   {
-    title: 'Programming Languages',
+    title: 'Frontend',
+    kicker: '01',
+    icon: Braces,
     skills: [
-      { name: 'Python', icon: SiPython, level: 80 },
-      { name: 'SQL', icon: Database, level: 75 },
-      { name: 'React', icon: SiReact, level: 60 },
-      { name: 'JavaScript', icon: SiJavascript, level: 70 },
-      { name: 'TypeScript', icon: SiTypescript, level: 45 },
-      { name: 'HTML', icon: SiHtml5, level: 90 },
-      { name: 'CSS', icon: SiCss3, level: 85 },
+      { name: 'Next.js 14', icon: SiNextdotjs },
+      { name: 'React', icon: SiReact },
+      { name: 'HTML5', icon: SiHtml5 },
+      { name: 'CSS3', icon: SiCss3 },
     ],
   },
   {
-    title: 'Packages & Tools',
+    title: 'Styling & UI',
+    kicker: '02',
+    icon: Palette,
     skills: [
-      { name: 'Pandas', icon: SiPandas, level: 85 },
-      { name: 'NumPy', icon: SiNumpy, level: 80 },
-      { name: 'Scikit-Learn', icon: SiScikitlearn, level: 75 },
-      { name: 'Matplotlib', icon: SiPlotly, level: 70 },
+      { name: 'Tailwind', icon: SiTailwindcss },
+      { name: 'shadcn/ui', icon: SiShadcnui },
+      { name: 'Bootstrap', icon: SiBootstrap },
     ],
   },
   {
-    title: 'Environment & BI',
+    title: 'Languages',
+    kicker: '03',
+    icon: Boxes,
     skills: [
-      { name: 'Git', icon: SiGit, level: 85 },
-      { name: 'PowerBI', icon: BarChart3, level: 75 },
-      { name: 'PostgreSQL', icon: SiPostgresql, level: 80 },
-      { name: 'VS Code', icon: VscCode, level: 90 },
-      { name: 'Visual Studio', icon: SiDotnet, level: 80 },
+      { name: 'TypeScript', icon: SiTypescript },
+      { name: 'JavaScript', icon: SiJavascript },
+      { name: 'Python', icon: SiPython },
+      { name: 'C#', icon: SiDotnet },
+      { name: 'SQL', icon: Database },
+    ],
+  },
+  {
+    title: 'Backend & Data',
+    kicker: '04',
+    icon: Database,
+    skills: [
+      { name: 'Supabase', icon: SiSupabase },
+      { name: 'PostgreSQL', icon: SiPostgresql },
+      { name: 'Node.js', icon: SiNodedotjs },
+      { name: 'REST APIs', icon: Wrench },
+    ],
+  },
+  {
+    title: 'Data Science',
+    kicker: '05',
+    icon: LineChart,
+    skills: [
+      { name: 'Pandas', icon: SiPandas },
+      { name: 'NumPy', icon: SiNumpy },
+      { name: 'Scikit-learn', icon: SiScikitlearn },
+      { name: 'Jupyter', icon: SiJupyter },
+    ],
+  },
+  {
+    title: 'Tools & Workflow',
+    kicker: '06',
+    icon: Wrench,
+    skills: [
+      { name: 'Git', icon: SiGit },
+      { name: 'GitHub', icon: SiGit },
+      { name: 'Vercel', icon: SiVercel },
+      { name: 'VS Code', icon: VscCode },
     ],
   },
 ];
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="relative py-20 md:py-32 px-6 md:px-12 bg-zinc-900/50">
-      <div className="section-divider mb-20" />
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-zinc-50 mb-4">
-            The <span className="accent-gradient">Toolkit</span>
+    <section id="skills" className="relative py-24 md:py-32 px-6 md:px-12 bg-background">
+      <div className="section-divider mb-24" />
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-14 max-w-2xl">
+          <p className="text-xs uppercase tracking-[0.2em] text-accent font-mono mb-3">
+            / stack
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
+            The tools I reach for.
           </h2>
-          <p className="text-zinc-400 text-lg">
-            Technologies and tools that power my data engineering and development work.
+          <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+            Grouped honestly. No percentages, no fake proficiency bars. These are
+            what I actually use in production and what I&apos;m comfortable
+            debugging at 2am.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {skillCategories.map((category, catIndex) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: catIndex * 0.1 }}
-              className="space-y-6"
+              transition={{ duration: 0.5, delay: catIndex * 0.06 }}
+              className="p-6 rounded-2xl border border-border bg-card/40 hover:border-accent/25 transition-colors duration-500"
             >
-              <h3 className="text-xl md:text-2xl font-bold text-zinc-100 flex items-center gap-3">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-                {category.title}
-              </h3>
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-xs font-mono text-accent/70 tracking-wider">
+                  {category.kicker}
+                </span>
+                <h3 className="text-base font-semibold text-foreground">
+                  {category.title}
+                </h3>
+              </div>
 
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
                   <SkillIcon
                     key={skill.name}
                     name={skill.name}
                     icon={skill.icon}
                     index={skillIndex}
-                    level={skill.level}
                   />
                 ))}
               </div>

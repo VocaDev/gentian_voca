@@ -1,27 +1,57 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
+const siteUrl = 'https://gentianvoca.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Voca — Data Engineering Portfolio',
-  description: 'Data Engineering Intern specializing in ETL pipelines, ML models, and full-stack development. 2nd year CS student building systems that turn raw data into business intelligence.',
-  keywords: ['Data Engineering', 'Machine Learning', 'ETL', 'Python', 'SQL', 'Data Science', 'Portfolio', 'Software Developer'],
-  authors: [{ name: 'Voca' }],
+  metadataBase: new URL(siteUrl),
+  title: 'Gentian Voca · Software Engineer',
+  description:
+    'Third-year CS student in Kosovo (GPA 9.20). Full-stack developer building LokalWeb and internal digitalisation tools at a national fuel company.',
+  keywords: [
+    'Gentian Voca',
+    'Software Engineer',
+    'Full-Stack Developer',
+    'Next.js',
+    'TypeScript',
+    'React',
+    'Supabase',
+    'Kosovo',
+    'LokalWeb',
+  ],
+  authors: [{ name: 'Gentian Voca', url: siteUrl }],
+  creator: 'Gentian Voca',
   openGraph: {
-    title: 'Voca — Data Engineering Portfolio',
-    description: 'Cleaning the noise. Predicting the future. Data Engineer available for hire.',
+    title: 'Gentian Voca · Software Engineer',
+    description:
+      'Full-stack developer building LokalWeb and internal digitalisation tools. Open to junior SWE roles for 2027.',
+    url: siteUrl,
+    siteName: 'Gentian Voca',
     type: 'website',
     locale: 'en_US',
-    // TODO: Replace with your own OG image (upload to /public/og-image.png)
-    // For now removed the bolt.new placeholder
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Voca — Data Engineering Portfolio',
-    description: 'Cleaning the noise. Predicting the future. Data Engineer available for hire.',
-    // TODO: Replace with your own OG image
+    title: 'Gentian Voca · Software Engineer',
+    description:
+      'Full-stack developer building LokalWeb and internal digitalisation tools. Open to junior SWE roles for 2027.',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -31,8 +61,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-zinc-950 text-zinc-50 antialiased`}>
+    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
+      <body className={`${inter.className} bg-background text-foreground antialiased selection:bg-accent/25`}>
         {children}
       </body>
     </html>
