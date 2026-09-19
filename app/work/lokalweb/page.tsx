@@ -9,9 +9,8 @@ import wizardServices from "@/assets/lokalweb-wizard-step2-services.jpg";
 import wizardArchetype from "@/assets/lokalweb-wizard-step4-archetype.jpg";
 import dashboard from "@/assets/lokalweb-dashboard-overview.jpg";
 import bookings from "@/assets/lokalweb-bookings.jpg";
-import genBarber from "@/assets/lokalweb-gen-barbershop-bold.jpg";
-import genClinic from "@/assets/lokalweb-gen-clinic-clean.jpg";
-import genRestaurant from "@/assets/lokalweb-gen-restaurant-elegant.jpg";
+import siteHero from "@/assets/lokalweb-site-hero.jpg";
+import siteServices from "@/assets/lokalweb-site-services.jpg";
 
 const title = "LokalWeb: a website-as-a-service for Kosovo’s small businesses";
 const description =
@@ -73,7 +72,7 @@ export default function LokalWebCase() {
           priority
           src={landing}
           alt="The LokalWeb landing page: a headline in Albanian, industry cards and a call to build a site."
-          caption="The landing page at 1440 pixels wide. Albanian first, because the owners are."
+          caption="The landing page at 1440 pixels wide. The marketing page speaks English; the wizard behind it speaks Albanian."
         />
       </Exhibit>
 
@@ -149,8 +148,10 @@ export default function LokalWebCase() {
             contact call-to-action instead.
           </li>
           <li>
-            <strong>Albanian first.</strong> The wizard, the dashboard and the generated sites speak the
-            owner&rsquo;s language.
+            <strong>Albanian where the owner types.</strong> The wizard is written in Albanian, with
+            examples in the way people actually describe their shops. The generated site follows the
+            language chosen in step five. The dashboard is still a mix of Albanian and English, which
+            is on the list.
           </li>
           <li>
             <strong>A wizard harness.</strong> Fixtures of real business types run through the pipeline
@@ -161,24 +162,24 @@ export default function LokalWebCase() {
       </CaseSection>
 
       <Exhibit>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           <Figure
-            src={genBarber}
-            alt="A generated barbershop website with a bold dark hero and a booking button."
-            sizes="(min-width: 1200px) 360px, 100vw"
-            caption="Generated: a barbershop."
+            src={siteHero}
+            alt="A generated website for a test car dealership, Voca Autosallon: a dark hero with the Albanian headline E di çka po blen and a contact button."
+            sizes="(min-width: 1200px) 540px, 100vw"
+            caption={
+              <>
+                A generated site for a test business, a car dealership. The headline, &ldquo;E di
+                çka po blen&rdquo; (you know what you are buying), was written by the model from the
+                wizard input.
+              </>
+            }
           />
           <Figure
-            src={genClinic}
-            alt="A generated clinic website with a clean light hero and a list of services."
-            sizes="(min-width: 1200px) 360px, 100vw"
-            caption="Generated: a clinic."
-          />
-          <Figure
-            src={genRestaurant}
-            alt="A generated restaurant website with a photographic hero and an elegant serif headline."
-            sizes="(min-width: 1200px) 360px, 100vw"
-            caption="Generated: a restaurant. Uneven in places, which is exactly the work that remains."
+            src={siteServices}
+            alt="The same generated site, section Pse Te Ne: five cards describing SUVs, sedans, wagons, coupés and a kilometre guarantee, in Albanian."
+            sizes="(min-width: 1200px) 540px, 100vw"
+            caption="The same site, further down. Structured sections composed from the brief. The clipped logo in the header of the first screenshot is the product's own bug, not the screenshot's. Uneven in places, which is exactly the work that remains."
           />
         </div>
       </Exhibit>
@@ -189,7 +190,7 @@ export default function LokalWebCase() {
             src={dashboard}
             alt="The owner dashboard: site status, quick actions and recent bookings."
             sizes="(min-width: 1200px) 540px, 100vw"
-            caption="The owner&rsquo;s dashboard."
+            caption="The owner&rsquo;s dashboard, on a test business."
           />
           <Figure
             src={bookings}

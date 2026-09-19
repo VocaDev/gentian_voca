@@ -5,17 +5,20 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { site } from "@/content/site";
 
+// "latin" already covers ë and ç (Latin-1 Supplement), so no latin-ext payload.
 const geist = Geist({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-geist-sans",
   display: "swap",
 });
 
+// Mono is labels only; it can arrive late without hurting anything, so don't preload it.
 const geistMono = Geist_Mono({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-geist-mono",
   display: "swap",
   weight: ["400"],
+  preload: false,
 });
 
 const title = `${site.name} · Software developer, Mitrovicë`;
@@ -104,9 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <Header />
-        <main id="main" className="animate-fade-in">
-          {children}
-        </main>
+        <main id="main">{children}</main>
         <Footer />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <script dangerouslySetInnerHTML={{ __html: consoleNote }} />

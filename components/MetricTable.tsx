@@ -13,7 +13,7 @@ export function MetricTable({
         <thead>
           <tr className="border-b border-hairline font-mono text-[12px] uppercase tracking-wide text-muted-2">
             <th scope="col" className="py-2 pr-3 font-normal">
-              {columns[0]}
+              {columns[0] || <span className="sr-only">Measure</span>}
             </th>
             <th scope="col" className="py-2 pr-3 font-normal">
               {columns[1]}

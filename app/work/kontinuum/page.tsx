@@ -289,8 +289,8 @@ export default function KontinuumCase() {
           <Figure
             phone
             src={afterWerkePhone}
-            alt="The catalogue page on a phone: the largest canvas fills the column, smaller works follow."
-            caption="On a phone the largest canvas fills the column; the relative scale holds within each row."
+            alt="The catalogue page on a phone: the headline 81 Arbeiten, series filters, the scale bar and the first works at their relative sizes."
+            caption="On a phone the relative scale still holds; the largest canvases fill the column."
           />
         </div>
       </Exhibit>

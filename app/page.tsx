@@ -17,12 +17,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const factBar = [
-  "Software Development & Digitalisation Assistant, Petrol Company",
-  "Freelance web developer",
-  "BSc Computer Science & Engineering, UMIB, class of 2027",
-  "TypeScript · Next.js · Supabase / PostgreSQL · Python",
-  "Albanian · English (C1)",
+const factLines = [
+  "Software Development & Digitalisation Assistant, Petrol Company · Freelance web developer · BSc Computer Science & Engineering, UMIB, class of 2027",
+  "TypeScript · Next.js · Supabase / PostgreSQL · Python · Albanian · English (C1)",
 ];
 
 const now = [
@@ -132,12 +129,9 @@ export default function Home() {
             <p className="mt-4 text-[14px] text-muted">
               Open to junior full-stack roles and internships for 2027.
             </p>
-            <ul className="m-0 mt-8 flex list-none flex-wrap gap-x-3 gap-y-1.5 p-0 text-[13px] leading-snug text-muted-2">
-              {factBar.map((f, i) => (
-                <li key={f} className="flex gap-3">
-                  {i > 0 ? <span aria-hidden="true">·</span> : null}
-                  <span>{f}</span>
-                </li>
+            <ul className="m-0 mt-8 list-none space-y-1.5 p-0 text-[13px] leading-snug text-muted-2">
+              {factLines.map((f) => (
+                <li key={f}>{f}</li>
               ))}
             </ul>
           </div>

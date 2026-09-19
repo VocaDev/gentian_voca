@@ -69,7 +69,9 @@ export function Comparison({
               alt={shots[k].alt}
               fill
               sizes={sizes}
-              priority={priority}
+              priority={priority && k === defaultView}
+              loading={k === defaultView ? undefined : "eager"}
+              fetchPriority={k === defaultView ? undefined : "low"}
               className={`object-cover object-top transition-opacity duration-[320ms] ease-[var(--ease-out-soft)] ${
                 view === k ? "opacity-100" : "opacity-0"
               }`}

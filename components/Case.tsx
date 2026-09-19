@@ -80,7 +80,7 @@ export function CaseNav({
   next: { href: string; label: string };
 }) {
   return (
-    <nav aria-label="Case study navigation" className="container-x mt-16 md:mt-24">
+    <nav aria-label="Case study navigation" className="container-x mt-16 pb-16 md:mt-24 md:pb-24">
       <div className="flex flex-col gap-6 border-t border-hairline pt-6 md:flex-row md:items-start md:justify-between md:pt-8">
         <div className="flex flex-col gap-2 text-sm">
           {live ? (
