@@ -70,7 +70,7 @@ export default function KontinuumCase() {
         <BeforeAfter
           priority
           pairs={kontinuumPairs}
-          caption="Four comparisons, all captured at the same viewport: the archived 2015 site and the live one. Click either half to see it full size."
+          caption="Four comparisons, all captured at the same viewport: the archived 2015 site and the live one. The arrow opens either state full size."
         />
       </Exhibit>
 

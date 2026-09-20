@@ -420,3 +420,51 @@
   .rise { animation: none; }
   .glass { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--color-paper); }
 }
+
+/* ---------- The turning card: Before on one face, After on the other ---------- */
+@layer components {
+  .flip {
+    perspective: 1600px;
+    touch-action: pan-y;
+  }
+
+  .flip__rotor {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(var(--turn, 0deg));
+    transition: transform 560ms var(--ease-spring);
+  }
+
+  /* While a finger or the mouse is turning it, the card follows the hand exactly. */
+  .flip[data-dragging="true"] .flip__rotor {
+    transition: none;
+  }
+
+  .flip__face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: inherit;
+  }
+
+  .flip__face--back {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(180deg);
+  }
+
+  .flip[data-grab="true"] {
+    cursor: grab;
+  }
+
+  .flip[data-dragging="true"] {
+    cursor: grabbing;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip__rotor {
+    transform: none;
+    transition: none;
+  }
+}

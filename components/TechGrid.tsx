@@ -66,28 +66,32 @@ const tech: Tech[] = [
 ];
 
 /**
- * The stack as a plain table: hairline rules between cells, one mark per cell,
- * named underneath. No motion, so it reads the same for everyone.
+ * The stack as bare marks on the page: no plate, no rules, no cells.
+ * Five across, so it still resolves to an even 5 x 5. The name appears on hover
+ * and on keyboard focus; it is always on the link for screen readers.
  */
 export function TechGrid() {
   return (
     <ul
       aria-label="Technologies I work with"
-      className="plate m-0 grid list-none grid-cols-5 gap-px overflow-hidden bg-hairline p-0"
+      className="m-0 grid list-none grid-cols-5 gap-x-2 gap-y-7 p-0 pt-7 md:gap-y-9"
     >
       {tech.map((t) => (
-        <li key={t.title} className="bg-plate">
+        <li key={t.title} className="flex justify-center">
           <a
             href={t.href}
             target="_blank"
             rel="noreferrer noopener"
             aria-label={t.title}
-            className="group flex h-full min-h-[84px] flex-col items-center justify-center gap-2 px-1.5 py-4 text-muted-2 no-underline transition-colors duration-[160ms] hover:bg-surface-2 hover:text-ink md:min-h-[104px] md:gap-2.5"
+            className="group relative flex items-center justify-center rounded-md p-2 text-muted-2 no-underline transition-colors duration-[160ms] hover:text-ink focus-visible:text-ink"
           >
-            <span aria-hidden="true" className="text-[20px] leading-none md:text-[24px]">
+            <span aria-hidden="true" className="text-[24px] leading-none md:text-[30px]">
               {t.node}
             </span>
-            <span className="text-center font-mono text-[9px] leading-tight tracking-tight md:text-[11px]">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-full left-1/2 mb-1.5 -translate-x-1/2 whitespace-nowrap rounded-md border border-hairline bg-plate px-2 py-1 font-mono text-[10px] leading-none text-ink opacity-0 transition-opacity duration-[160ms] group-hover:opacity-100 group-focus-visible:opacity-100 md:text-[11px]"
+            >
               {t.title}
             </span>
           </a>
