@@ -43,6 +43,7 @@ export default function KontinuumCase() {
           { label: "Role", value: "Audit, concept, design, build, migration, handover" },
           { label: "Client", value: "Harald Wicht, Atelier Kontinuum, Balzhausen, Germany" },
           { label: "Timeline", value: "Brief 1 September 2026, live 15 September 2026" },
+          { label: "Stack", value: "HTML · CSS · JavaScript · Python · GitHub Actions · Render" },
           {
             label: "Live",
             value: (

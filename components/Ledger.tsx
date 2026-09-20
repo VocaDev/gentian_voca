@@ -35,6 +35,7 @@ export function Ledger() {
             {row.facts ? (
               <p className="mt-2.5 font-mono text-[12px] leading-relaxed text-muted-2 tnum">{row.facts}</p>
             ) : null}
+            <p className="mt-1.5 font-mono text-[12px] leading-relaxed text-muted-2">{row.stack}</p>
           </div>
 
           <div className="flex gap-5 md:flex-col md:items-end md:gap-2 md:pt-1">

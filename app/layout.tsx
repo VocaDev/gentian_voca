@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
   preload: false,
 });
 
-const title = `${site.name} · Software developer, Mitrovicë`;
+const title = `${site.name} · Software Developer, Mitrovicë`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -75,7 +75,7 @@ const jsonLd = {
       "@type": "Person",
       "@id": `${site.url}/#person`,
       name: site.name,
-      jobTitle: "Software developer",
+      jobTitle: "Software Developer",
       url: site.url,
       email: `mailto:${site.email}`,
       image: `${site.url}/opengraph-image`,

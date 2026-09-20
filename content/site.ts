@@ -1,7 +1,7 @@
 export const site = {
   name: "Gentian Voca",
   url: "https://gentianvoca.vercel.app",
-  role: "Software developer",
+  role: "Software Developer",
   location: "Mitrovicë, Kosovo",
   email: "gentianvoca@gmail.com",
   phone: "+383 49 206 565",
@@ -9,7 +9,7 @@ export const site = {
   headline:
     "I turn the work people still do by hand into software they use every day.",
   description:
-    "Software developer in Mitrovicë, Kosovo. Internal systems for a national fuel retailer by day, websites for small businesses by night. Third-year Computer Science & Engineering at UMIB.",
+    "Software Developer in Mitrovicë, Kosovo. Internal systems for a national fuel retailer by day, websites for small businesses by night. Third-year Computer Science & Engineering at UMIB.",
   links: {
     cv: "/cv.pdf",
     linkedin: "https://www.linkedin.com/in/gentianvoca",

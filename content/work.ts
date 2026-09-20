@@ -13,6 +13,7 @@ export type LedgerRow = {
   change: string;
   forWhom: string;
   facts?: string;
+  stack: string;
   caseHref: string;
   live?: { href: string; label: string };
   thumb: { src: StaticImageData; before?: StaticImageData; alt: string };
@@ -28,6 +29,7 @@ export const ledger: LedgerRow[] = [
       "Rebuilt a painter's 2015 WordPress site as a fast, bilingual catalogue of 81 works, with a zoomable viewer and an editing panel made for the owner.",
     forWhom: "For Harald Wicht, Atelier Kontinuum, Balzhausen, Germany",
     facts: "41 → 1.5 MB gallery page · 2 weeks brief to launch · 224 → 0 accessibility violations",
+    stack: "HTML · CSS · JavaScript · Python · GitHub Actions · Render",
     caseHref: "/work/kontinuum",
     live: { href: "https://kontinuum.biz", label: "kontinuum.biz" },
     thumb: {
@@ -44,6 +46,7 @@ export const ledger: LedgerRow[] = [
     change:
       "A website-as-a-service for Kosovo's small businesses: a five-step wizard and two Claude calls produce a site on its own subdomain. A working prototype, built solo.",
     forWhom: "Solo: product, design, full-stack",
+    stack: "Next.js · TypeScript · Tailwind CSS · Supabase · PostgreSQL · Claude API · Vercel",
     caseHref: "/work/lokalweb",
     live: { href: "https://lokal-web-one.vercel.app", label: "Landing page" },
     thumb: { src: lokalwebLanding, alt: "LokalWeb case study. The landing page." },
