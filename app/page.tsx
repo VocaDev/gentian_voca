@@ -4,12 +4,13 @@ import { site } from "@/content/site";
 import { Section } from "@/components/Section";
 import { Ledger, SmallerThings } from "@/components/Ledger";
 import { IdentityPlate } from "@/components/IdentityPlate";
+import { TechLoop } from "@/components/TechLoop";
+import { InstitutionMark } from "@/components/InstitutionMark";
+import { logoIfPresent } from "@/lib/logos";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
-
-const stackLine = "TypeScript · Next.js · React · Supabase / PostgreSQL · Python · Albanian · English (C1)";
 
 const experience = [
   {
@@ -41,18 +42,24 @@ const education = [
     org: "University of Mitrovica “Isa Boletini”",
     when: "2024 – 2027, expected",
     note: "GPA 9.20 / 10. Third year.",
+    logo: logoIfPresent("umib.png"),
+    monogram: "UM",
   },
   {
     role: "Data Science course",
     org: "TecTigon Academy, Prishtinë",
     when: "Oct 2025 – Jan 2026",
     note: "Python, Pandas and applied data analysis.",
+    logo: logoIfPresent("tectigon.png"),
+    monogram: "TA",
   },
   {
     role: "High school, social sciences",
     org: "Gjimnazi “Frang Bardhi”, Mitrovicë",
     when: "2021 – 2024",
     note: "5.0 / 5.0.",
+    logo: logoIfPresent("frang-bardhi.png"),
+    monogram: "FB",
   },
 ];
 
@@ -89,14 +96,17 @@ export default function Home() {
             {site.headline}
           </h1>
           <p className="mt-6 max-w-[58ch] text-[18px] leading-[1.55] text-muted md:text-[19px]">
-            Third-year Computer Science &amp; Engineering student at UMIB. By day I build internal
-            systems at Petrol Company, a national fuel retailer. By night I build websites for small
+            Third-year Computer Science &amp; Engineering student at UMIB.
+            <br />
+            By day I build internal systems @ Petrol Company. By night I build websites for small
             businesses.
           </p>
-          <p className="label m-0 mt-5 normal-case tracking-normal">{stackLine}</p>
-          <div className="mt-10 md:mt-12">
+          <div className="mt-9 md:mt-11">
             <IdentityPlate />
           </div>
+        </div>
+        <div className="mt-10 pb-6 md:mt-12 md:pb-8">
+          <TechLoop />
         </div>
       </section>
 
@@ -144,8 +154,9 @@ export default function Home() {
               {education.map((e) => (
                 <li
                   key={e.org}
-                  className="grid gap-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_12rem] md:gap-6"
+                  className="grid gap-x-4 gap-y-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[auto_minmax(0,1fr)_12rem] md:gap-6"
                 >
+                  <InstitutionMark src={e.logo} name={e.org} monogram={e.monogram} />
                   <div>
                     <p className="m-0 text-[16px] leading-snug">
                       <span className="font-medium text-ink">{e.role}</span>
