@@ -18,6 +18,8 @@ const experience = [
     org: "Petrol Company",
     when: "Apr 2026 – present",
     where: "Fushë Kosovë, Kosovo",
+    logo: logoIfPresent("petrol.png"),
+    monogram: "PC",
     note: "Internal software used daily by leadership, HQ teams and field managers across a national network of 30+ retail stations. Manual workflows replaced with structured systems running in production, pairing business-process analysis with full-stack development.",
   },
   {
@@ -25,6 +27,8 @@ const experience = [
     org: "Atelier Kontinuum",
     when: "Sep 2026 – present",
     where: "Balzhausen, Germany",
+    logo: logoIfPresent("kontinuum.png"),
+    monogram: "AK",
     note: "kontinuum.biz: audit, rebuild, migration, and the care that follows.",
   },
   {
@@ -32,6 +36,8 @@ const experience = [
     org: "TecTigon Academy",
     when: "Nov 2025 – Feb 2026",
     where: "Prishtinë, Kosovo",
+    logo: logoIfPresent("tectigon.png"),
+    monogram: "TA",
     note: "Data cleaning and exploratory analysis with Pandas, a baseline sales-forecasting model, visual reports delivered in agile sprints. Reference letter from the CEO.",
   },
 ];
@@ -130,18 +136,21 @@ export default function Home() {
               {experience.map((e) => (
                 <li
                   key={e.org}
-                  className="grid gap-x-6 gap-y-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_11rem]"
+                  className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[auto_minmax(0,1fr)_11rem] md:gap-x-6"
                 >
-                  <p className="m-0 text-[15px] leading-snug md:col-start-1 md:row-start-1">
+                  <span className="row-span-3">
+                    <InstitutionMark src={e.logo} name={e.org} monogram={e.monogram} />
+                  </span>
+                  <p className="m-0 text-[15px] leading-snug md:col-start-2 md:row-start-1">
                     <span className="font-medium text-ink">{e.role}</span>
                     <span className="text-muted">, {e.org}</span>
                   </p>
-                  <p className="m-0 font-mono text-[12px] leading-relaxed text-muted-2 tnum md:col-start-2 md:row-start-1 md:row-span-2 md:text-right">
+                  <p className="m-0 font-mono text-[12px] leading-relaxed text-muted-2 tnum md:col-start-3 md:row-start-1 md:row-span-2 md:text-right">
                     {e.when}
                     <span className="md:hidden"> · </span>
                     <span className="md:block">{e.where}</span>
                   </p>
-                  <p className="m-0 mt-0.5 max-w-[62ch] text-[13.5px] leading-relaxed text-muted md:col-start-1 md:row-start-2">
+                  <p className="m-0 mt-0.5 max-w-[62ch] text-[13.5px] leading-relaxed text-muted md:col-start-2 md:row-start-2">
                     {e.note}
                   </p>
                 </li>
