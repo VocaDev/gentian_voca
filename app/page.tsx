@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import { site } from "@/content/site";
@@ -7,8 +6,8 @@ import { Section } from "@/components/Section";
 import { Comparison } from "@/components/Comparison";
 import { FactsStrip } from "@/components/FactsStrip";
 import { Ledger, SmallerThings } from "@/components/Ledger";
-import { ArrowDown, ArrowRight, ArrowUpRight } from "@/components/Icons";
-import portrait from "@/assets/portrait.jpg";
+import { IdentityPlate } from "@/components/IdentityPlate";
+import { ArrowRight, ArrowUpRight } from "@/components/Icons";
 import beforeHome from "@/assets/kontinuum-before-home.jpg";
 import afterHome from "@/assets/kontinuum-after-home.jpg";
 import afterPhone from "@/assets/kontinuum-after-phone.jpg";
@@ -17,10 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const factLines = [
-  "Software Development & Digitalisation Assistant, Petrol Company · Freelance web developer · BSc Computer Science & Engineering, UMIB, class of 2027",
-  "TypeScript · Next.js · Supabase / PostgreSQL · Python · Albanian · English (C1)",
-];
+const stackLine = "TypeScript · Next.js · React · Supabase / PostgreSQL · Python · Albanian · English (C1)";
 
 const now = [
   {
@@ -100,51 +96,26 @@ function Block({ label, children }: { label: string; children: ReactNode }) {
 export default function Home() {
   return (
     <>
-      {/* Identity */}
-      <section className="container-x pb-14 pt-10 md:pb-20 md:pt-16" aria-labelledby="identity">
-        <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_8rem] md:gap-14">
-          <div className="max-w-[52ch]">
-            <p className="m-0 font-mono text-[13px] text-muted-2">
-              {site.role} · {site.location}
-            </p>
-            <h1
-              id="identity"
-              className="mt-4 text-[clamp(1.75rem,1.2rem+1.7vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.015em]"
-            >
-              {site.headline}
-            </h1>
-            <p className="mt-5 text-[17px] leading-[1.6] text-muted">
-              Third-year Computer Science &amp; Engineering student at UMIB, 9.20 out of 10. By day I
-              build internal systems at Petrol Company, a national fuel retailer. On the side I build
-              websites for small businesses, most recently for a painter in Bavaria.
-            </p>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              <a href={`mailto:${site.email}`} className="btn-primary">
-                Email me
-              </a>
-              <a href={site.links.cv} className="btn-secondary" target="_blank" rel="noopener">
-                CV (PDF) <ArrowDown />
-              </a>
-            </div>
-            <p className="mt-4 text-[14px] text-muted">
-              Open to junior full-stack roles and internships for 2027.
-            </p>
-            <ul className="m-0 mt-8 list-none space-y-1.5 p-0 text-[13px] leading-snug text-muted-2">
-              {factLines.map((f) => (
-                <li key={f}>{f}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="order-first md:order-none">
-            <Image
-              src={portrait}
-              alt="Gentian Voca"
-              width={128}
-              height={128}
-              priority
-              sizes="128px"
-              className="frame h-20 w-20 object-cover md:h-32 md:w-32"
-            />
+      {/* Identity: a statement, then the identity plate as one object */}
+      <section className="desk-light" aria-labelledby="identity">
+        <div className="container-x pb-14 pt-12 md:pb-20 md:pt-20">
+          <p className="label m-0">
+            {site.role} · {site.location}
+          </p>
+          <h1
+            id="identity"
+            className="mt-5 max-w-[24ch] text-[clamp(2.25rem,1.55rem+2vw,3.375rem)] font-medium leading-[1.06] tracking-[-0.022em]"
+          >
+            {site.headline}
+          </h1>
+          <p className="mt-6 max-w-[58ch] text-[18px] leading-[1.55] text-muted md:text-[19px]">
+            Third-year Computer Science &amp; Engineering student at UMIB, 9.20 out of 10. By day I build
+            internal systems at Petrol Company, a national fuel retailer. On the side I build websites
+            for small businesses, most recently for a painter in Bavaria.
+          </p>
+          <p className="label m-0 mt-5 normal-case tracking-normal">{stackLine}</p>
+          <div className="mt-10 md:mt-12">
+            <IdentityPlate />
           </div>
         </div>
       </section>

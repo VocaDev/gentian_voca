@@ -21,19 +21,19 @@ export function CaseHeader({
 }) {
   return (
     <header className="container-x pt-10 md:pt-16">
-      <p className="m-0 flex flex-wrap gap-x-3 font-mono text-[12px] uppercase tracking-wide text-muted-2">
+      <p className="label m-0 flex flex-wrap gap-x-3">
         <span>{index}</span>
         <span aria-hidden="true">·</span>
         <span>{kind}</span>
         <span aria-hidden="true">·</span>
         <span>{year}</span>
       </p>
-      <h1 className="mt-4 text-[clamp(2rem,1.4rem+2vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.015em]">
+      <h1 className="mt-4 text-[clamp(2.25rem,1.7rem+1.7vw,3rem)] font-medium leading-[1.06] tracking-[-0.022em]">
         {title}
       </h1>
-      <p className="mt-2 text-[18px] text-muted md:text-[20px]">{subtitle}</p>
-      <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,18rem)] md:gap-12">
-        <p className="m-0 max-w-[58ch] text-[18px] leading-[1.55] md:text-[19px]">{lede}</p>
+      <p className="mt-3 text-[19px] text-muted md:text-[21px]">{subtitle}</p>
+      <div className="mt-9 grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,18rem)] md:gap-12">
+        <p className="m-0 max-w-[58ch] text-[18px] leading-[1.55] md:text-[20px]">{lede}</p>
         <dl className="m-0 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 self-start border-t border-hairline pt-3 text-[14px] leading-snug">
           {meta.map((m) => (
             <Fragment key={m.label}>
@@ -59,13 +59,14 @@ export function CaseSection({
   return (
     <section className={`container-x mt-14 md:mt-20 ${className}`}>
       <div className="md:grid md:grid-cols-[5.5rem_minmax(0,1fr)] md:gap-8">
-        <h2 className="m-0 font-mono text-[12px] uppercase tracking-wide text-muted-2 md:pt-1.5">{title}</h2>
+        <h2 className="label m-0 md:pt-1.5">{title}</h2>
         <div className="prose mt-3 md:mt-0">{children}</div>
       </div>
     </section>
   );
 }
 
+/** Exhibit wrapper. The plates inside rise once as they enter the viewport; captions never fade. */
 export function Exhibit({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`container-x mt-10 md:mt-14 ${className}`}>{children}</div>;
 }

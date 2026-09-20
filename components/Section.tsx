@@ -19,13 +19,13 @@ export function Section({
   return (
     <section id={id} aria-labelledby={headingId} className={`scroll-mt-20 ${className}`}>
       <div className="container-x">
-        <div className="border-t border-hairline pt-6 md:pt-8">
+        <div className="border-t border-hairline pt-7 md:pt-9">
           <div className="grid gap-4 md:grid-cols-[5.5rem_minmax(0,1fr)] md:gap-8">
-            <span className="font-mono text-[13px] text-muted-2 tnum" aria-hidden="true">
+            <span className="font-mono text-[13px] text-muted-2 tnum md:pt-1" aria-hidden="true">
               {index}
             </span>
             <div>
-              <h2 id={headingId} className="m-0 text-[20px] font-medium leading-snug">
+              <h2 id={headingId} className="m-0 text-[22px] font-medium leading-snug tracking-[-0.01em] md:text-[24px]">
                 {title}
               </h2>
               {lede ? (

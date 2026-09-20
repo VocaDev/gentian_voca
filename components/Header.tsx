@@ -1,12 +1,31 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { site } from "@/content/site";
 import { ArrowDown } from "./Icons";
 import { MobileMenu } from "./MobileMenu";
 
+/**
+ * Solid paper at the top of the page. Once content passes beneath it, it becomes glass:
+ * the navigation layer floating above content, which is the one place Apple puts it.
+ */
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 border-b border-hairline bg-paper">
-      <div className="container-x flex h-14 items-center justify-between md:h-16">
+    <header
+      data-scrolled={scrolled}
+      className={`bar sticky top-0 z-40 border-b border-hairline ${scrolled ? "glass" : ""}`}
+    >
+      <div className="container-x flex h-14 items-center justify-between md:h-[60px]">
         <Link href="/" className="text-[15px] font-medium tracking-[-0.01em] text-ink no-underline">
           {site.name}
         </Link>

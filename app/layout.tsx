@@ -12,11 +12,12 @@ const geist = Geist({
   display: "swap",
 });
 
-// Mono is labels only; it can arrive late without hurting anything, so don't preload it.
+// Mono is labels only. "optional" means it never swaps in late and never shifts a line;
+// on a slow first visit the labels simply stay in the metric-matched fallback.
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
-  display: "swap",
+  display: "optional",
   weight: ["400"],
   preload: false,
 });

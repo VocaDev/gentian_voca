@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
-/* ---------- Tokens: The Dossier ---------- */
+/* ---------- Tokens: The Dossier, second pass. Three materials: Paper, Plate, Glass. ---------- */
 @theme {
-  --color-paper: #f5f3ee;
+  --color-paper: #f6f4ef;
+  --color-plate: #fcfbf8;
   --color-ink: #17181a;
   --color-muted: #5a5852;
   --color-muted-2: #6b6963;
@@ -15,33 +16,52 @@
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
 
   --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
 
   --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* A soft spring with a whisper of overshoot. Used for things that move, never for opacity. */
+  --ease-spring: linear(
+    0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%, 0.849 31.5%,
+    0.937 38.1%, 0.968 41.8%, 0.991 45.7%, 1.006 50.1%, 1.015 55%, 1.017 63.9%, 1.001
+  );
 
-  --animate-fade-in: fade-in 200ms var(--ease-out-soft) both;
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  --shadow-plate: 0 1px 2px rgb(23 24 26 / 0.05), 0 14px 36px -18px rgb(23 24 26 / 0.22);
+  --shadow-plate-hover: 0 1px 2px rgb(23 24 26 / 0.06), 0 18px 44px -18px rgb(23 24 26 / 0.3);
+  --shadow-glass: 0 8px 24px -12px rgb(0 0 0 / 0.35);
 }
 
-/* Dark: designed, not inverted. Same structure, own tokens. */
+/* Material variables that are not theme utilities. */
+:root {
+  --highlight: inset 0 1px 0 rgb(255 255 255 / 0.65);
+  --glass-fill: rgb(246 244 239 / 0.72);
+  --glass-solid: rgb(246 244 239 / 0.96);
+  --backdrop-fill: rgb(246 244 239 / 0.72);
+  --plate-shadow: var(--shadow-plate);
+  --plate-shadow-hover: var(--shadow-plate-hover);
+  --desk-light: color-mix(in srgb, #f6f4ef 93%, white);
+}
+
+/* Dark: designed, not inverted. Plates sit lighter than the table; light comes from a thin top edge. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-paper: #121316;
+    --color-paper: #111215;
+    --color-plate: #1a1b20;
     --color-ink: #e8e5de;
     --color-muted: #a09c93;
     --color-muted-2: #8f8b83;
     --color-hairline: #2b2d31;
-    --color-surface-2: #1a1b1f;
+    --color-surface-2: #202127;
     --color-accent: #8fa9c6;
     --color-accent-hover: #9db4cd;
+
+    --highlight: inset 0 1px 0 rgb(255 255 255 / 0.06);
+    --glass-fill: rgb(17 18 21 / 0.7);
+    --glass-solid: rgb(17 18 21 / 0.96);
+    --backdrop-fill: rgb(17 18 21 / 0.72);
+    --plate-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px -18px rgb(0 0 0 / 0.7);
+    --plate-shadow-hover: 0 1px 2px rgb(0 0 0 / 0.45), 0 22px 48px -18px rgb(0 0 0 / 0.8);
+    --desk-light: color-mix(in srgb, #111215 94%, white);
   }
 }
 
@@ -58,6 +78,9 @@
   body {
     @apply bg-paper text-ink font-sans antialiased;
     text-rendering: optimizeLegibility;
+  }
+  body:has(dialog[open]) {
+    overflow: hidden;
   }
   ::selection {
     background: color-mix(in srgb, var(--color-accent) 24%, transparent);
@@ -100,6 +123,9 @@
   .tnum {
     font-variant-numeric: tabular-nums;
   }
+  .label {
+    @apply font-mono text-[12px] uppercase tracking-[0.08em] text-muted-2;
+  }
   .skip-link {
     @apply absolute left-4 z-50 rounded-sm bg-ink px-3 py-2 text-sm text-paper;
     top: -4rem;
@@ -108,35 +134,102 @@
     top: 1rem;
   }
 
-  /* Frames: 1px hairline, no radius, no shadow. Screenshots are exhibits. */
-  .frame {
-    @apply border border-hairline;
+  /* ---------- Paper ---------- */
+  /* One tonal light behind the identity block. Monochrome, under 3%, no hue. */
+  .desk-light {
+    background: radial-gradient(70% 60% at 50% -10%, var(--desk-light) 0%, transparent 70%);
   }
 
-  /* Buttons */
+  /* ---------- Plate: raised surfaces that carry evidence, never prose ---------- */
+  .plate {
+    background: var(--color-plate);
+    border: 1px solid color-mix(in srgb, var(--color-hairline) 85%, transparent);
+    border-radius: 12px;
+    box-shadow: var(--highlight), var(--plate-shadow);
+  }
+  @media (max-width: 767px) {
+    .plate {
+      border-radius: 10px;
+    }
+  }
+  .plate-hover {
+    transition:
+      transform 220ms var(--ease-spring),
+      box-shadow 220ms var(--ease-out-soft);
+  }
+  @media (hover: hover) {
+    .plate-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--highlight), var(--plate-shadow-hover);
+    }
+  }
+  .plate-hover:active {
+    transform: scale(0.995);
+  }
+  .plate-img {
+    border-radius: 11px;
+  }
+  @media (max-width: 767px) {
+    .plate-img {
+      border-radius: 9px;
+    }
+  }
+
+  /* ---------- Glass: controls and overlays, never content ---------- */
+  .glass {
+    background: var(--glass-fill);
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
+    backdrop-filter: blur(18px) saturate(125%);
+    box-shadow: var(--highlight), var(--shadow-glass);
+  }
+  @supports not (backdrop-filter: blur(1px)) {
+    .glass {
+      background: var(--glass-solid);
+    }
+  }
+  @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+    .glass {
+      background: var(--color-paper);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+  /* The header: solid paper at the top of the page, glass once content passes beneath it. */
+  .bar {
+    transition:
+      background-color 200ms var(--ease-out-soft),
+      box-shadow 200ms var(--ease-out-soft);
+  }
+  .bar[data-scrolled="false"] {
+    background: var(--color-paper);
+    box-shadow: none;
+  }
+
+  /* ---------- Buttons ---------- */
   .btn-primary {
-    @apply inline-flex h-10 items-center gap-1.5 rounded-sm bg-ink px-3.5 text-sm font-medium text-paper no-underline;
+    @apply inline-flex h-10 items-center gap-1.5 rounded-md bg-ink px-3.5 text-sm font-medium text-paper no-underline;
     transition:
       background-color 120ms var(--ease-out-soft),
-      transform 120ms var(--ease-out-soft);
+      transform 220ms var(--ease-spring);
   }
   .btn-primary:hover {
     background: color-mix(in srgb, var(--color-ink) 88%, var(--color-paper));
   }
   .btn-primary:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
   }
   .btn-secondary {
-    @apply inline-flex h-10 items-center gap-1.5 rounded-sm border border-hairline px-3.5 text-sm font-medium text-ink no-underline;
+    @apply inline-flex h-10 items-center gap-1.5 rounded-md border border-hairline bg-plate px-3.5 text-sm font-medium text-ink no-underline;
+    box-shadow: var(--highlight);
     transition:
       border-color 120ms var(--ease-out-soft),
-      transform 120ms var(--ease-out-soft);
+      transform 220ms var(--ease-spring);
   }
   .btn-secondary:hover {
     border-color: var(--color-ink);
   }
   .btn-secondary:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
   }
 
   /* Text links: ink with a quiet underline that turns accent on hover. */
@@ -160,48 +253,88 @@
     text-underline-offset: 3px;
   }
 
-  /* The one glass element. Regular variant, blur fallback, solid under reduced transparency. */
-  .glass {
-    background: color-mix(in srgb, var(--color-paper) 72%, transparent);
-    -webkit-backdrop-filter: blur(16px) saturate(120%);
-    backdrop-filter: blur(16px) saturate(120%);
-    box-shadow: 0 8px 24px -12px rgb(0 0 0 / 0.35);
-  }
-  @supports not (backdrop-filter: blur(1px)) {
-    .glass {
-      background: color-mix(in srgb, var(--color-paper) 96%, transparent);
-    }
-  }
-  @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
-    .glass {
-      background: var(--color-paper);
-      -webkit-backdrop-filter: none;
-      backdrop-filter: none;
-    }
-  }
-
-  /* Segmented control built on real radio inputs, so arrow keys come free. */
+  /* ---------- Segmented control: real radios, a sliding ink indicator ---------- */
   .segmented {
-    @apply m-0 gap-0.5 rounded-md border border-hairline p-0.5;
+    @apply relative m-0 grid p-0.5;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-hairline) 80%, transparent);
   }
-  .segmented label {
-    @apply relative cursor-pointer select-none rounded-sm px-3 py-1.5 text-[13px] font-medium text-muted;
-    transition:
-      background-color 200ms var(--ease-out-soft),
-      color 200ms var(--ease-out-soft);
+  .segmented > label {
+    @apply relative z-10 cursor-pointer select-none px-3.5 py-1.5 text-center text-[13px] font-medium text-muted;
+    border-radius: 999px;
+    transition: color 200ms var(--ease-out-soft);
+    white-space: nowrap;
   }
-  .segmented label:hover {
+  .segmented > label:hover {
     color: var(--color-ink);
   }
-  .segmented label:has(input:checked) {
-    @apply bg-ink text-paper;
+  .segmented > label:has(input:checked) {
+    color: var(--color-paper);
   }
-  .segmented label:has(input:focus-visible) {
+  .segmented > label:has(input:focus-visible) {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
   }
+  .seg-indicator {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    border-radius: 999px;
+    background: var(--color-ink);
+    transition: transform 220ms var(--ease-spring);
+    pointer-events: none;
+  }
 
-  /* Prose for case studies. Measure 66ch, 17px. */
+  /* ---------- Lightbox: a native dialog. The page dims and blurs; a plate rises. ---------- */
+  dialog.lightbox {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    width: fit-content;
+    height: fit-content;
+    max-width: 92vw;
+    max-height: 92vh;
+    margin: auto;
+    overflow: visible;
+    color: inherit;
+  }
+  dialog.lightbox::backdrop {
+    background: var(--backdrop-fill);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    backdrop-filter: blur(20px) saturate(120%);
+    animation: fade-in 220ms var(--ease-out-soft) both;
+  }
+  dialog.lightbox[open] > .sheet {
+    animation: sheet-in 380ms var(--ease-spring) both;
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes sheet-in {
+    from { opacity: 0; transform: translateY(10px) scale(0.965); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ---------- Figures entering the viewport rise once. Scroll-driven, no JS, motion-safe. ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .rise {
+        animation: rise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 35%;
+      }
+      @keyframes rise {
+        from { opacity: 0.001; transform: translateY(10px); }
+        to { opacity: 1; transform: none; }
+      }
+    }
+  }
+
+  /* ---------- Prose for case studies. Measure 66ch, 17px. ---------- */
   .prose {
     @apply max-w-[66ch] text-[17px] leading-[1.6];
   }
@@ -249,10 +382,16 @@
     height: 0;
     overflow: clip;
     transition:
-      height 200ms var(--ease-out-soft),
-      content-visibility 200ms allow-discrete;
+      height 220ms var(--ease-out-soft),
+      content-visibility 220ms allow-discrete;
   }
   details[open]::details-content {
     height: auto;
   }
+}
+
+/* Print: no scroll-driven animation, no blur. */
+@media print {
+  .rise { animation: none; }
+  .glass { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--color-paper); }
 }

@@ -1,3 +1,8 @@
+import type { StaticImageData } from "next/image";
+import kontinuumAfter from "@/assets/kontinuum-after-home.jpg";
+import kontinuumBefore from "@/assets/kontinuum-before-home.jpg";
+import lokalwebLanding from "@/assets/lokalweb-landing.jpg";
+
 export type Kind = "Client, paid" | "Work, confidential" | "Side project, parked";
 
 export type LedgerRow = {
@@ -10,6 +15,7 @@ export type LedgerRow = {
   caseHref?: string;
   live?: { href: string; label: string };
   confidential?: boolean;
+  thumb?: { src: StaticImageData; before?: StaticImageData; alt: string };
 };
 
 export const ledger: LedgerRow[] = [
@@ -23,6 +29,11 @@ export const ledger: LedgerRow[] = [
     forWhom: "For Harald Wicht, Atelier Kontinuum, Balzhausen, Germany",
     caseHref: "/work/kontinuum",
     live: { href: "https://kontinuum.biz", label: "kontinuum.biz" },
+    thumb: {
+      src: kontinuumAfter,
+      before: kontinuumBefore,
+      alt: "Kontinuum case study. The new homepage; hover to see the old one.",
+    },
   },
   {
     index: "02",
@@ -44,6 +55,7 @@ export const ledger: LedgerRow[] = [
     forWhom: "Solo: product, design, full-stack",
     caseHref: "/work/lokalweb",
     live: { href: "https://lokal-web-one.vercel.app", label: "Landing page" },
+    thumb: { src: lokalwebLanding, alt: "LokalWeb case study. The landing page." },
   },
 ];
 

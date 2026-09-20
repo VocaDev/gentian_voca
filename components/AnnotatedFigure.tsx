@@ -1,5 +1,6 @@
-import Image, { type StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import type { ReactNode } from "react";
+import { ExhibitImage } from "./ExhibitImage";
 
 export type Note = { x: number; y: number; text: string };
 
@@ -7,31 +8,32 @@ export function AnnotatedFigure({
   src,
   alt,
   caption,
+  label,
   notes,
   sizes = "(min-width: 1200px) 740px, 100vw",
 }: {
   src: StaticImageData;
   alt: string;
   caption?: ReactNode;
+  label?: string;
   notes: Note[];
   sizes?: string;
 }) {
   return (
     <figure className="m-0 grid gap-5 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] md:gap-8">
       <div>
-        <div className="frame relative overflow-hidden bg-surface-2">
-          <Image src={src} alt={alt} sizes={sizes} placeholder="blur" className="block h-auto w-full" />
+        <ExhibitImage src={src} alt={alt} label={label} sizes={sizes}>
           {notes.map((n, i) => (
             <span
               key={i}
               aria-hidden="true"
-              className="absolute flex h-[22px] w-[22px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-ink font-mono text-[11px] font-medium text-paper shadow-[0_0_0_2px_var(--color-paper)]"
+              className="absolute flex h-[22px] w-[22px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-ink font-mono text-[11px] font-medium text-paper shadow-[0_0_0_2px_var(--color-plate)]"
               style={{ left: `${n.x}%`, top: `${n.y}%` }}
             >
               {i + 1}
             </span>
           ))}
-        </div>
+        </ExhibitImage>
         {caption ? (
           <figcaption className="mt-3 text-[13px] leading-relaxed text-muted-2">{caption}</figcaption>
         ) : null}

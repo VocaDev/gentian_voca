@@ -9,11 +9,11 @@ type View = "before" | "after" | "phone";
 const LABELS: Record<View, string> = { before: "Before", after: "After", phone: "Phone" };
 
 /**
- * Before / After (/ Phone) comparison.
+ * Before / After (/ Phone) comparison on a plate.
  * - Real radio inputs, so keyboard arrows and screen readers work without custom code.
- * - The other state stays visible as an inset on wide screens, so the change reads without a click.
- * - The floating control is the one Liquid Glass element on the site: a control over imagery.
- *   On narrow screens it sits below the image and is solid (nothing behind it to refract).
+ * - The ink indicator slides between options instead of jumping: continuity, not decoration.
+ * - The other state stays visible as a small plate inset on wide screens.
+ * - The floating switch is glass: a control over imagery. On narrow screens it sits below the image, solid.
  */
 export function Comparison({
   before,
@@ -36,12 +36,18 @@ export function Comparison({
   const nameWide = useId();
   const nameNarrow = useId();
   const views: View[] = phone ? ["before", "after", "phone"] : ["before", "after"];
+  const index = views.indexOf(view);
   const other: "before" | "after" = view === "before" ? "after" : "before";
   const shots: Record<"before" | "after", Shot> = { before, after };
 
   const control = (name: string, className: string) => (
     <fieldset className={`segmented ${className}`}>
       <legend className="sr-only">Choose what to show</legend>
+      <span
+        className="seg-indicator"
+        aria-hidden="true"
+        style={{ width: `calc((100% - 4px) / ${views.length})`, transform: `translateX(${index * 100}%)` }}
+      />
       {views.map((v) => (
         <label key={v}>
           <input
@@ -61,7 +67,7 @@ export function Comparison({
   return (
     <figure className="m-0">
       <div className="relative">
-        <div className="frame relative aspect-[16/10] overflow-hidden bg-surface-2">
+        <div className="plate rise relative aspect-[16/10] overflow-hidden">
           {(["before", "after"] as const).map((k) => (
             <Image
               key={k}
@@ -72,8 +78,8 @@ export function Comparison({
               priority={priority && k === defaultView}
               loading={k === defaultView ? undefined : "eager"}
               fetchPriority={k === defaultView ? undefined : "low"}
-              className={`object-cover object-top transition-opacity duration-[320ms] ease-[var(--ease-out-soft)] ${
-                view === k ? "opacity-100" : "opacity-0"
+              className={`plate-img object-cover object-top transition-[opacity,transform] duration-[320ms] ease-[var(--ease-out-soft)] ${
+                view === k ? "scale-100 opacity-100" : "scale-[1.015] opacity-0"
               }`}
               aria-hidden={view !== k}
             />
@@ -81,18 +87,18 @@ export function Comparison({
 
           {phone ? (
             <div
-              className={`absolute inset-0 flex items-center justify-center bg-paper transition-opacity duration-[320ms] ease-[var(--ease-out-soft)] ${
+              className={`plate-img absolute inset-0 flex items-center justify-center bg-paper transition-opacity duration-[320ms] ease-[var(--ease-out-soft)] ${
                 view === "phone" ? "opacity-100" : "pointer-events-none opacity-0"
               }`}
               aria-hidden={view !== "phone"}
             >
-              <div className="relative aspect-[390/844] h-[90%] overflow-hidden rounded-lg border border-hairline bg-surface-2">
+              <div className="plate relative aspect-[390/844] h-[88%] overflow-hidden">
                 <Image
                   src={phone.src}
                   alt={phone.alt}
                   fill
                   sizes="(min-width: 768px) 400px, 70vw"
-                  className="object-cover object-top"
+                  className="plate-img object-cover object-top"
                 />
               </div>
             </div>
@@ -102,28 +108,22 @@ export function Comparison({
             <button
               type="button"
               onClick={() => setView(other)}
-              className="frame absolute bottom-4 left-4 hidden w-[27%] overflow-hidden bg-paper text-left shadow-[0_8px_24px_-12px_rgb(0_0_0/0.35)] transition-transform duration-[120ms] ease-[var(--ease-out-soft)] hover:-translate-y-0.5 md:block"
+              className="plate plate-hover absolute bottom-4 left-4 hidden w-[26%] overflow-hidden text-left md:block"
               aria-label={`Show ${LABELS[other].toLowerCase()}`}
             >
               <span className="relative block aspect-[16/10]">
-                <Image
-                  src={shots[other].src}
-                  alt=""
-                  fill
-                  sizes="320px"
-                  className="object-cover object-top"
-                />
+                <Image src={shots[other].src} alt="" fill sizes="320px" className="plate-img object-cover object-top" />
               </span>
-              <span className="absolute left-2 top-2 rounded-sm bg-paper/90 px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-wide text-ink">
+              <span className="glass absolute left-2 top-2 rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.08em] text-ink">
                 {LABELS[other]}
               </span>
             </button>
           ) : null}
 
-          {control(nameWide, "glass absolute bottom-4 left-1/2 hidden -translate-x-1/2 md:flex")}
+          {control(nameWide, "glass absolute bottom-4 left-1/2 hidden -translate-x-1/2 md:grid")}
         </div>
 
-        {control(nameNarrow, "mt-3 flex w-fit md:hidden")}
+        {control(nameNarrow, "mt-3 w-fit bg-plate md:hidden")}
       </div>
       <figcaption className="mt-3 text-[13px] leading-relaxed text-muted-2">{caption}</figcaption>
     </figure>
