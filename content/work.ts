@@ -29,7 +29,7 @@ export const ledger: LedgerRow[] = [
       "Rebuilt a painter's 2015 WordPress site as a fast, bilingual catalogue of 81 works, with a zoomable viewer and an editing panel made for the owner.",
     forWhom: "For Harald Wicht, Atelier Kontinuum, Balzhausen, Germany",
     facts: "41 → 1.5 MB gallery page · 2 weeks brief to launch · 224 → 0 accessibility violations",
-    stack: "HTML · CSS · JavaScript · Python · GitHub Actions · Render",
+    stack: "HTML · CSS · JavaScript · Python · Render",
     caseHref: "/work/kontinuum",
     live: { href: "https://kontinuum.biz", label: "kontinuum.biz" },
     thumb: {
