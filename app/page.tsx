@@ -213,10 +213,10 @@ export default function Home() {
           <h2 id="how-i-work-title" className="label m-0">
             How I work
           </h2>
-          <p className="mt-8 max-w-[26ch] text-[clamp(1.6rem,1.05rem+2.1vw,2.6rem)] font-medium leading-[1.22] tracking-[-0.018em] text-ink md:mt-10 md:max-w-[19ch]">
+          <p className="mt-8 text-[clamp(1.6rem,1.05rem+2.1vw,2.6rem)] font-medium leading-[1.18] tracking-[-0.018em] text-ink md:mt-10">
             Most of what I build replaces something a person is already doing by hand.
           </p>
-          <p className="mt-6 max-w-[46ch] text-[clamp(1.05rem,0.95rem+0.5vw,1.375rem)] leading-[1.5] text-muted md:mt-8">
+          <p className="mt-7 text-[clamp(1.05rem,0.95rem+0.5vw,1.375rem)] leading-[1.55] text-muted md:mt-9">
             So I spend time with whoever owns that problem before I write anything: the requirements
             that matter are rarely the ones in the brief. Then I build the thing they can run without
             me, and I write the handover as carefully as the code.
