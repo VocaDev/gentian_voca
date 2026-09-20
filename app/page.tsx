@@ -24,7 +24,7 @@ const experience = [
     role: "Freelance web developer",
     org: "Atelier Kontinuum",
     when: "Sep 2026 – present",
-    where: "Balzhausen, Germany · remote",
+    where: "Balzhausen, Germany",
     note: "kontinuum.biz: audit, rebuild, migration, and the care that follows.",
   },
   {
