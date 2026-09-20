@@ -7,9 +7,9 @@ export const site = {
   phone: "+383 49 206 565",
   phoneHref: "tel:+38349206565",
   headline:
-    "I turn spreadsheets, chat threads and tired websites into software people use every day.",
+    "I turn the work people still do by hand into software they use every day.",
   description:
-    "Software developer in Mitrovicë, Kosovo. Internal systems for a national fuel retailer by day, websites for small businesses on the side. Third-year Computer Science & Engineering at UMIB.",
+    "Software developer in Mitrovicë, Kosovo. Internal systems for a national fuel retailer by day, websites for small businesses by night. Third-year Computer Science & Engineering at UMIB.",
   links: {
     cv: "/cv.pdf",
     linkedin: "https://www.linkedin.com/in/gentianvoca",

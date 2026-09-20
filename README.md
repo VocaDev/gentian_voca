@@ -21,9 +21,9 @@ Rebuilt from scratch in September 2026. The idea is simple: don't say the work i
 
 ## Rules baked in
 
-- Every claim matches the CV. Confidential work stays at the level the CV states.
+- Every claim matches the CV. Employer work is described at the level the CV states.
 - Colour lives in the screenshots; the interface is neutral.
-- Exactly one translucent element on the site: the control that floats over the comparison imagery.
+- Three materials with fixed jobs: paper for prose, plates for evidence, glass only for controls (header on scroll, the comparison switcher, lightbox chrome).
 - Motion is opacity and small translations only; `prefers-reduced-motion` turns it off.
 
 ## Develop

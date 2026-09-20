@@ -28,7 +28,7 @@ export default function LokalWebCase() {
   return (
     <article>
       <CaseHeader
-        index="03"
+        index="02"
         kind="Side project, parked"
         year="2025 – 2026"
         title="LokalWeb"

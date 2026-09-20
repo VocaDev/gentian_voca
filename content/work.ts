@@ -3,7 +3,7 @@ import kontinuumAfter from "@/assets/kontinuum-after-home.jpg";
 import kontinuumBefore from "@/assets/kontinuum-before-home.jpg";
 import lokalwebLanding from "@/assets/lokalweb-landing.jpg";
 
-export type Kind = "Client, paid" | "Work, confidential" | "Side project, parked";
+export type Kind = "Client, paid" | "Side project, parked";
 
 export type LedgerRow = {
   index: string;
@@ -12,10 +12,10 @@ export type LedgerRow = {
   kind: Kind;
   change: string;
   forWhom: string;
-  caseHref?: string;
+  facts?: string;
+  caseHref: string;
   live?: { href: string; label: string };
-  confidential?: boolean;
-  thumb?: { src: StaticImageData; before?: StaticImageData; alt: string };
+  thumb: { src: StaticImageData; before?: StaticImageData; alt: string };
 };
 
 export const ledger: LedgerRow[] = [
@@ -27,6 +27,7 @@ export const ledger: LedgerRow[] = [
     change:
       "Rebuilt a painter's 2015 WordPress site as a fast, bilingual catalogue of 81 works, with a zoomable viewer and an editing panel made for the owner.",
     forWhom: "For Harald Wicht, Atelier Kontinuum, Balzhausen, Germany",
+    facts: "41 → 1.5 MB gallery page · 2 weeks brief to launch · 224 → 0 accessibility violations",
     caseHref: "/work/kontinuum",
     live: { href: "https://kontinuum.biz", label: "kontinuum.biz" },
     thumb: {
@@ -37,16 +38,6 @@ export const ledger: LedgerRow[] = [
   },
   {
     index: "02",
-    year: "2026 –",
-    title: "Internal systems, Petrol Company",
-    kind: "Work, confidential",
-    change:
-      "Replacing spreadsheet-and-chat workflows with structured systems used daily by leadership, HQ teams and field managers across a national network of 30 retail stations.",
-    forWhom: "For Petrol Company, a national fuel retailer in Kosovo",
-    confidential: true,
-  },
-  {
-    index: "03",
     year: "2025 – 26",
     title: "LokalWeb",
     kind: "Side project, parked",
@@ -58,16 +49,6 @@ export const ledger: LedgerRow[] = [
     thumb: { src: lokalwebLanding, alt: "LokalWeb case study. The landing page." },
   },
 ];
-
-export const petrolBlock = {
-  paragraphs: [
-    "Build internal software tools used daily by leadership, HQ teams, and field managers across a national network of 30 retail stations.",
-    "Replace legacy manual workflows (spreadsheets + chat-based coordination) with structured digital systems running in production.",
-    "Combine business-process analysis with hands-on full-stack development (Next.js, TypeScript, Supabase) to ship in-house solutions end-to-end.",
-  ],
-  stack: "Next.js · TypeScript · Supabase / PostgreSQL",
-  note: "Confidential: no names, no screenshots. Happy to walk through the approach in a call.",
-};
 
 export type SmallThing = {
   title: string;

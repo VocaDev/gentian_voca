@@ -17,7 +17,7 @@ const experience = [
     org: "Petrol Company",
     when: "Apr 2026 – present",
     where: "Fushë Kosovë, Kosovo",
-    note: "Internal systems for a national fuel retailer, in daily use across 30 retail stations. Row 02 above.",
+    note: "Internal software used daily by leadership, HQ teams and field managers across a national network of 30 retail stations. Manual workflows replaced with structured systems running in production, pairing business-process analysis with full-stack development.",
   },
   {
     role: "Freelance web developer",
@@ -41,6 +41,12 @@ const education = [
     org: "University of Mitrovica “Isa Boletini”",
     when: "2024 – 2027, expected",
     note: "GPA 9.20 / 10. Third year.",
+  },
+  {
+    role: "Data Science course",
+    org: "TecTigon Academy, Prishtinë",
+    when: "Oct 2025 – Jan 2026",
+    note: "Python, Pandas and applied data analysis.",
   },
   {
     role: "High school, social sciences",

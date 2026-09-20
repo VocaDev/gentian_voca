@@ -1,45 +1,7 @@
 import Link from "next/link";
-import { ledger, petrolBlock, smallerThings } from "@/content/work";
+import { ledger, smallerThings } from "@/content/work";
 import { ArrowRight, ArrowUpRight } from "./Icons";
 import { SwapThumb } from "./SwapThumb";
-
-/**
- * The one piece of work that cannot be photographed. Rather than leave a hole in the row,
- * it gets its own object: an ink plate that states the scale and says why there is no screenshot.
- */
-function Tile() {
-  return (
-    <div className="plate-ink rise flex aspect-[16/10] flex-col justify-between p-3.5" aria-hidden="true">
-      {/* Fixed light values: the plate is ink in both themes, so these must not follow the paper token. */}
-      <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-[#f6f4ef]/60">
-        No screenshot · NDA
-      </span>
-      <div>
-        <div className="font-mono text-[34px] leading-none tnum">30</div>
-        <div className="mt-1.5 text-[12px] leading-snug text-[#f6f4ef]/65">retail stations, in daily use</div>
-      </div>
-    </div>
-  );
-}
-
-function PetrolDetails() {
-  return (
-    <details className="mt-3">
-      <summary className="inline-flex cursor-pointer items-center gap-1 text-sm font-medium text-accent hover:text-accent-hover">
-        About this work
-      </summary>
-      <div className="mt-3 max-w-[62ch] space-y-3 rounded-md bg-surface-2 p-4 text-[15px] leading-relaxed text-ink md:p-5">
-        {petrolBlock.paragraphs.map((p) => (
-          <p key={p} className="m-0">
-            {p}
-          </p>
-        ))}
-        <p className="m-0 font-mono text-[13px] text-muted-2">{petrolBlock.stack}</p>
-        <p className="m-0 text-[14px] text-muted">{petrolBlock.note}</p>
-      </div>
-    </details>
-  );
-}
 
 export function Ledger() {
   return (
@@ -55,38 +17,30 @@ export function Ledger() {
           </div>
 
           <div className="md:self-start">
-            {row.thumb && row.caseHref ? (
-              <SwapThumb href={row.caseHref} after={row.thumb.src} before={row.thumb.before} alt={row.thumb.alt} />
-            ) : (
-              <Tile />
-            )}
+            <SwapThumb href={row.caseHref} after={row.thumb.src} before={row.thumb.before} alt={row.thumb.alt} />
           </div>
 
           <div className="min-w-0">
             <h3 className="m-0 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[19px] font-medium leading-snug">
-              {row.caseHref ? (
-                <Link
-                  href={row.caseHref}
-                  className="text-ink underline decoration-transparent underline-offset-[3px] transition-colors duration-[120ms] hover:decoration-accent"
-                >
-                  {row.title}
-                </Link>
-              ) : (
-                <span>{row.title}</span>
-              )}
+              <Link
+                href={row.caseHref}
+                className="text-ink underline decoration-transparent underline-offset-[3px] transition-colors duration-[120ms] hover:decoration-accent"
+              >
+                {row.title}
+              </Link>
               <span className="label">{row.kind}</span>
             </h3>
             <p className="mt-2 max-w-[62ch] text-[15px] leading-relaxed text-muted">{row.change}</p>
             <p className="mt-1.5 text-[13px] text-muted-2">{row.forWhom}</p>
-            {row.confidential ? <PetrolDetails /> : null}
+            {row.facts ? (
+              <p className="mt-2.5 font-mono text-[12px] leading-relaxed text-muted-2 tnum">{row.facts}</p>
+            ) : null}
           </div>
 
           <div className="flex gap-5 md:flex-col md:items-end md:gap-2 md:pt-1">
-            {row.caseHref ? (
-              <Link href={row.caseHref} className="proof">
-                Case <ArrowRight />
-              </Link>
-            ) : null}
+            <Link href={row.caseHref} className="proof">
+              Case <ArrowRight />
+            </Link>
             {row.live ? (
               <a href={row.live.href} className="proof" target="_blank" rel="noopener">
                 {row.live.label} <ArrowUpRight />
