@@ -1,0 +1,81 @@
+/* Pointer-reactive plate.
+   The idea is borrowed from React Bits <ProfileCard>: the surface reads the pointer
+   and responds with a small tilt and a light that follows it. The holographic layers
+   are not borrowed — this is the site's own material, so the sheen is white at low
+   opacity and the tilt is a few degrees rather than a few dozen. */
+
+.tilt-plate {
+  perspective: 900px;
+  transform: translate3d(0, 0, 0.1px);
+}
+
+.tilt-plate__surface {
+  position: relative;
+  transform: rotateX(var(--tilt-rx, 0deg)) rotateY(var(--tilt-ry, 0deg));
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 220ms var(--ease-out-soft);
+}
+
+/* When the pointer leaves, the surface eases home rather than snapping. */
+.tilt-plate__surface[data-settling="true"] {
+  transition:
+    transform 420ms var(--ease-spring),
+    box-shadow 220ms var(--ease-out-soft);
+}
+
+.tilt-plate[data-active="true"] .tilt-plate__surface {
+  box-shadow: var(--highlight), var(--plate-shadow-hover);
+}
+
+/* The light that follows the pointer. Sits above the surface, below the content. */
+.tilt-plate__sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 260ms var(--ease-out-soft);
+  background: radial-gradient(
+    38rem circle at var(--tilt-px, 50%) var(--tilt-py, 50%),
+    rgb(255 255 255 / 0.5) 0%,
+    rgb(255 255 255 / 0.14) 26%,
+    transparent 62%
+  );
+  mix-blend-mode: soft-light;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tilt-plate__sheen {
+    background: radial-gradient(
+      38rem circle at var(--tilt-px, 50%) var(--tilt-py, 50%),
+      rgb(255 255 255 / 0.16) 0%,
+      rgb(255 255 255 / 0.05) 26%,
+      transparent 62%
+    );
+    mix-blend-mode: plus-lighter;
+  }
+}
+
+.tilt-plate[data-active="true"] .tilt-plate__sheen {
+  opacity: 1;
+}
+
+/* Content rides slightly above the surface so the tilt reads as depth. */
+.tilt-plate__content {
+  position: relative;
+  transform: translateZ(14px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt-plate__surface {
+    transform: none !important;
+    transition: none !important;
+  }
+  .tilt-plate__content {
+    transform: none;
+  }
+  .tilt-plate__sheen {
+    display: none;
+  }
+}

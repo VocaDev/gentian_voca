@@ -84,7 +84,7 @@ export const smallerThings: SmallThing[] = [
   {
     title: "Enit's Barber Shop",
     year: "2025",
-    line: "A booking-site concept for a Prishtinë barbershop with Google Sheets as the back end. A concept, not in commercial use.",
+    line: "A booking-site concept for a Mitrovica barbershop with Google Sheets as the back end. A concept, not in commercial use.",
     link: { href: "https://github.com/VocaDev/Enit-s-Barber-Shop", label: "Code" },
   },
   {

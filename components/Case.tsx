@@ -58,7 +58,7 @@ export function CaseSection({
 }) {
   return (
     <section className={`container-x mt-14 md:mt-20 ${className}`}>
-      <div className="md:grid md:grid-cols-[5.5rem_minmax(0,1fr)] md:gap-8">
+      <div className="md:grid md:grid-cols-[7rem_minmax(0,1fr)] md:gap-8">
         <h2 className="label m-0 md:pt-1.5">{title}</h2>
         <div className="prose mt-3 md:mt-0">{children}</div>
       </div>

@@ -18,7 +18,7 @@ const experience = [
     org: "Petrol Company",
     when: "Apr 2026 – present",
     where: "Fushë Kosovë, Kosovo",
-    note: "Internal software used daily by leadership, HQ teams and field managers across a national network of 30 retail stations. Manual workflows replaced with structured systems running in production, pairing business-process analysis with full-stack development.",
+    note: "Internal software used daily by leadership, HQ teams and field managers across a national network of 30+ retail stations. Manual workflows replaced with structured systems running in production, pairing business-process analysis with full-stack development.",
   },
   {
     role: "Freelance web developer",
@@ -73,8 +73,8 @@ const credentials = [
 
 function Block({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="md:grid md:grid-cols-[5.5rem_minmax(0,1fr)] md:gap-8">
-      <h3 className="m-0 font-mono text-[12px] uppercase tracking-wide text-muted-2 md:pt-1">{label}</h3>
+    <div className="md:grid md:grid-cols-[7rem_minmax(0,1fr)] md:gap-8">
+      <h3 className="label m-0 md:pt-1">{label}</h3>
       <div className="mt-3 md:mt-0">{children}</div>
     </div>
   );
@@ -133,13 +133,13 @@ export default function Home() {
                   className="grid gap-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_12rem] md:gap-6"
                 >
                   <div>
-                    <p className="m-0 text-[16px] leading-snug">
+                    <p className="m-0 text-[15px] leading-snug">
                       <span className="font-medium text-ink">{e.role}</span>
                       <span className="text-muted">, {e.org}</span>
                     </p>
-                    <p className="m-0 mt-1.5 max-w-[60ch] text-[14px] leading-relaxed text-muted">{e.note}</p>
+                    <p className="m-0 mt-1.5 max-w-[62ch] text-[13.5px] leading-relaxed text-muted">{e.note}</p>
                   </div>
-                  <p className="m-0 font-mono text-[13px] leading-relaxed text-muted-2 tnum md:text-right">
+                  <p className="m-0 font-mono text-[12px] leading-relaxed text-muted-2 tnum md:text-right">
                     {e.when}
                     <br />
                     {e.where}
@@ -158,13 +158,13 @@ export default function Home() {
                 >
                   <InstitutionMark src={e.logo} name={e.org} monogram={e.monogram} />
                   <div>
-                    <p className="m-0 text-[16px] leading-snug">
+                    <p className="m-0 text-[15px] leading-snug">
                       <span className="font-medium text-ink">{e.role}</span>
                       <span className="text-muted">, {e.org}</span>
                     </p>
-                    <p className="m-0 mt-1.5 text-[14px] text-muted">{e.note}</p>
+                    <p className="m-0 mt-1.5 text-[13.5px] text-muted">{e.note}</p>
                   </div>
-                  <p className="m-0 font-mono text-[13px] leading-relaxed text-muted-2 tnum md:text-right">{e.when}</p>
+                  <p className="m-0 font-mono text-[12px] leading-relaxed text-muted-2 tnum md:text-right">{e.when}</p>
                 </li>
               ))}
             </ul>
@@ -177,18 +177,18 @@ export default function Home() {
                   key={c.what}
                   className="grid gap-1 border-t border-hairline py-3 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_12rem] md:gap-6"
                 >
-                  <p className="m-0 text-[15px] leading-snug">
+                  <p className="m-0 text-[14px] leading-snug">
                     <span className="text-ink">{c.what}</span>
                     <span className="text-muted">, {c.who}</span>
                   </p>
-                  <p className="m-0 font-mono text-[13px] text-muted-2 tnum md:text-right">{c.when}</p>
+                  <p className="m-0 font-mono text-[12px] text-muted-2 tnum md:text-right">{c.when}</p>
                 </li>
               ))}
             </ul>
           </Block>
 
           <Block label="How I work">
-            <p className="m-0 max-w-[60ch] text-[16px] leading-[1.65] text-ink">
+            <p className="m-0 max-w-[62ch] text-[15px] leading-[1.65] text-ink">
               Most of what I build replaces something a person is already doing by hand. So I spend
               time with whoever owns that problem before I write anything: the requirements that
               matter are rarely the ones in the brief. Then I build the thing they can run without

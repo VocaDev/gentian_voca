@@ -9,7 +9,7 @@ export function Ledger() {
       {ledger.map((row) => (
         <li
           key={row.index}
-          className="grid grid-cols-1 gap-4 border-t border-hairline py-7 md:grid-cols-[5.5rem_168px_minmax(0,1fr)_auto] md:gap-8 md:py-8"
+          className="grid grid-cols-1 gap-4 border-t border-hairline py-7 md:grid-cols-[7rem_168px_minmax(0,1fr)_auto] md:gap-8 md:py-8"
         >
           <div className="flex items-baseline gap-3 font-mono text-[13px] text-muted-2 tnum md:block">
             <span>{row.index}</span>
@@ -55,7 +55,7 @@ export function Ledger() {
 
 export function SmallerThings() {
   return (
-    <div className="border-t border-hairline pt-6 md:grid md:grid-cols-[5.5rem_minmax(0,1fr)] md:gap-8 md:pt-8">
+    <div className="border-t border-hairline pt-6 md:grid md:grid-cols-[7rem_minmax(0,1fr)] md:gap-8 md:pt-8">
       <h3 className="label m-0 md:pt-1">Smaller things</h3>
       <ul className="m-0 mt-4 list-none p-0 md:mt-0">
         {smallerThings.map((t) => (
