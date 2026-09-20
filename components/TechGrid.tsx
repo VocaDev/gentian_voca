@@ -18,10 +18,6 @@ import {
   SiVercel,
   SiRender,
   SiVite,
-  SiNpm,
-  SiBootstrap,
-  SiNetlify,
-  SiClaude,
   SiClaudecode,
 } from "react-icons/si";
 import type { ReactNode } from "react";
@@ -29,26 +25,7 @@ import type { ReactNode } from "react";
 type Tech = { node: ReactNode; title: string; href: string };
 
 /**
- * Matplotlib has no Simple Icons mark, so this is drawn by hand: the polar bar chart
- * that gives the real logo its shape, reduced to one colour so it sits with the rest.
- */
-function Matplotlib() {
-  return (
-    <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" role="presentation" focusable="false">
-      <circle cx="12" cy="12" r="10.25" fill="none" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M12 12 L20.37 10.52 A8.5 8.5 0 0 0 17.46 5.49 Z" />
-      <path d="M12 12 L15.15 7.49 A5.5 5.5 0 0 0 11.52 6.52 Z" />
-      <path d="M12 12 L10.40 2.94 A9.2 9.2 0 0 0 4.95 6.09 Z" />
-      <path d="M12 12 L6.43 8.10 A6.8 6.8 0 0 0 5.23 12.59 Z" />
-      <path d="M12 12 L4.12 13.39 A8 8 0 0 0 6.86 18.13 Z" />
-      <path d="M12 12 L9.25 15.93 A4.8 4.8 0 0 0 12.42 16.78 Z" />
-      <path d="M12 12 L13.25 19.09 A7.2 7.2 0 0 0 17.52 16.63 Z" />
-    </svg>
-  );
-}
-
-/**
- * 25 marks, so the grid resolves to an exact 5 x 5 on desktop.
+ * 20 marks, so the grid resolves to an exact 5 x 4.
  * Rough order: languages, front end, back end, data, tools.
  */
 const tech: Tech[] = [
@@ -62,7 +39,6 @@ const tech: Tech[] = [
   { node: <SiReact />, title: "React", href: "https://react.dev" },
   { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
   { node: <SiTailwindcss />, title: "Tailwind", href: "https://tailwindcss.com" },
-  { node: <SiBootstrap />, title: "Bootstrap", href: "https://getbootstrap.com" },
 
   { node: <SiNodedotjs />, title: "Node.js", href: "https://nodejs.org" },
   { node: <SiSupabase />, title: "Supabase", href: "https://supabase.com" },
@@ -74,12 +50,8 @@ const tech: Tech[] = [
   { node: <SiGithub />, title: "GitHub", href: "https://github.com" },
   { node: <SiVercel />, title: "Vercel", href: "https://vercel.com" },
   { node: <SiRender />, title: "Render", href: "https://render.com" },
-  { node: <SiNetlify />, title: "Netlify", href: "https://www.netlify.com" },
 
   { node: <SiVite />, title: "Vite", href: "https://vite.dev" },
-  { node: <SiNpm />, title: "npm", href: "https://www.npmjs.com" },
-  { node: <Matplotlib />, title: "Matplotlib", href: "https://matplotlib.org" },
-  { node: <SiClaude />, title: "Claude", href: "https://claude.com" },
   { node: <SiClaudecode />, title: "Claude Code", href: "https://claude.com/product/claude-code" },
 ];
 
