@@ -200,17 +200,32 @@ export default function Home() {
             </ul>
           </Block>
 
-          <Block label="How I work">
-            <p className="m-0 max-w-[62ch] text-[15px] leading-[1.65] text-ink">
-              Most of what I build replaces something a person is already doing by hand. So I spend
-              time with whoever owns that problem before I write anything: the requirements that
-              matter are rarely the ones in the brief. Then I build the thing they can run without
-              me, and I write the handover as carefully as the code. TypeScript most days, Python
-              when there is data.
-            </p>
-          </Block>
         </div>
       </Section>
+
+      {/* A full view of one idea, between the record and the invitation */}
+      <section
+        id="how-i-work"
+        aria-labelledby="how-i-work-title"
+        className="mt-16 flex min-h-[100svh] scroll-mt-16 items-center border-t border-hairline py-24 md:mt-24 md:py-32"
+      >
+        <div className="container-x">
+          <h2 id="how-i-work-title" className="label m-0">
+            How I work
+          </h2>
+          <p className="mt-8 max-w-[26ch] text-[clamp(1.6rem,1.05rem+2.1vw,2.6rem)] font-medium leading-[1.22] tracking-[-0.018em] text-ink md:mt-10 md:max-w-[19ch]">
+            Most of what I build replaces something a person is already doing by hand.
+          </p>
+          <p className="mt-6 max-w-[46ch] text-[clamp(1.05rem,0.95rem+0.5vw,1.375rem)] leading-[1.5] text-muted md:mt-8">
+            So I spend time with whoever owns that problem before I write anything: the requirements
+            that matter are rarely the ones in the brief. Then I build the thing they can run without
+            me, and I write the handover as carefully as the code.
+          </p>
+          <p className="label m-0 mt-8 normal-case tracking-normal md:mt-10">
+            TypeScript most days, Python when there is data.
+          </p>
+        </div>
+      </section>
 
       {/* 03 · Contact */}
       <Section
