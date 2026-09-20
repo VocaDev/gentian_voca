@@ -22,7 +22,8 @@ export default function NotFound() {
           See the work <ArrowRight className="h-3.5 w-3.5 opacity-80" />
         </Link>
         <a href="/cv.pdf" className="btn-secondary" target="_blank" rel="noopener">
-          CV (PDF) <ArrowDown />
+          CV <ArrowDown />
+          <span className="sr-only"> (PDF)</span>
         </a>
       </div>
     </div>
