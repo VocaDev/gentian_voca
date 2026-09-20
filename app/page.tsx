@@ -80,7 +80,7 @@ const credentials = [
 function Block({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div className="md:grid md:grid-cols-[7rem_minmax(0,1fr)] md:gap-8">
-      <h3 className="label m-0 md:pt-1">{label}</h3>
+      <h3 className="label m-0 text-[10px] md:pt-1">{label}</h3>
       <div className="mt-3 md:mt-0">{children}</div>
     </div>
   );
@@ -141,16 +141,16 @@ export default function Home() {
                   <span className="row-span-3">
                     <InstitutionMark src={e.logo} name={e.org} monogram={e.monogram} />
                   </span>
-                  <p className="m-0 text-[15px] leading-snug md:col-start-2 md:row-start-1">
+                  <p className="m-0 text-[14px] leading-snug md:col-start-2 md:row-start-1">
                     <span className="font-medium text-ink">{e.role}</span>
                     <span className="text-muted">, {e.org}</span>
                   </p>
-                  <p className="m-0 font-mono text-[12px] leading-relaxed text-muted-2 tnum md:col-start-3 md:row-start-1 md:row-span-2 md:text-right">
+                  <p className="m-0 font-mono text-[11px] leading-relaxed text-muted-2 tnum md:col-start-3 md:row-start-1 md:row-span-2 md:text-right">
                     {e.when}
                     <span className="md:hidden"> · </span>
                     <span className="md:block">{e.where}</span>
                   </p>
-                  <p className="m-0 mt-0.5 max-w-[62ch] text-[13.5px] leading-relaxed text-muted md:col-start-2 md:row-start-2">
+                  <p className="m-0 mt-0.5 max-w-[62ch] text-[13px] leading-relaxed text-muted md:col-start-2 md:row-start-2">
                     {e.note}
                   </p>
                 </li>
@@ -168,14 +168,14 @@ export default function Home() {
                   <span className="row-span-3 md:row-span-3">
                     <InstitutionMark src={e.logo} name={e.org} monogram={e.monogram} />
                   </span>
-                  <p className="m-0 text-[15px] leading-snug md:col-start-2 md:row-start-1">
+                  <p className="m-0 text-[14px] leading-snug md:col-start-2 md:row-start-1">
                     <span className="font-medium text-ink">{e.role}</span>
                     <span className="text-muted">, {e.org}</span>
                   </p>
-                  <p className="m-0 font-mono text-[12px] leading-relaxed text-muted-2 tnum md:col-start-3 md:row-start-1 md:text-right">
+                  <p className="m-0 font-mono text-[11px] leading-relaxed text-muted-2 tnum md:col-start-3 md:row-start-1 md:text-right">
                     {e.when}
                   </p>
-                  <p className="m-0 mt-0.5 text-[13.5px] leading-relaxed text-muted md:col-start-2 md:row-start-2">
+                  <p className="m-0 mt-0.5 text-[13px] leading-relaxed text-muted md:col-start-2 md:row-start-2">
                     {e.note}
                   </p>
                 </li>
@@ -190,11 +190,11 @@ export default function Home() {
                   key={c.what}
                   className="grid gap-x-6 gap-y-0.5 border-t border-hairline py-3 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_11rem]"
                 >
-                  <p className="m-0 text-[14px] leading-snug">
+                  <p className="m-0 text-[13.5px] leading-snug">
                     <span className="text-ink">{c.what}</span>
                     <span className="text-muted">, {c.who}</span>
                   </p>
-                  <p className="m-0 font-mono text-[12px] text-muted-2 tnum md:text-right">{c.when}</p>
+                  <p className="m-0 font-mono text-[11px] text-muted-2 tnum md:text-right">{c.when}</p>
                 </li>
               ))}
             </ul>
