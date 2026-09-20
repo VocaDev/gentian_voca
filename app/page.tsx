@@ -1,39 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Fragment, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { site } from "@/content/site";
 import { Section } from "@/components/Section";
-import { BeforeAfter } from "@/components/BeforeAfter";
-import { kontinuumPairs } from "@/content/kontinuum";
-import { FactsStrip } from "@/components/FactsStrip";
 import { Ledger, SmallerThings } from "@/components/Ledger";
 import { IdentityPlate } from "@/components/IdentityPlate";
-import { ArrowRight, ArrowUpRight } from "@/components/Icons";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
 const stackLine = "TypeScript · Next.js · React · Supabase / PostgreSQL · Python · Albanian · English (C1)";
-
-const now = [
-  {
-    when: "October 2026",
-    what: "Semester 5 at UMIB starts: computer networks, mobile development, database management, information security, big data.",
-  },
-  {
-    when: "Petrol Company",
-    what: "The internal systems are built and in daily use. My work there now is maintenance and small improvements.",
-  },
-  {
-    when: "kontinuum.biz",
-    what: "Live since 15 September. I look after the hosting and the updates.",
-  },
-  {
-    when: "2027",
-    what: "Open to junior full-stack roles and internships, in Kosovo, the EU or remote.",
-  },
-];
 
 const experience = [
   {
@@ -107,9 +83,9 @@ export default function Home() {
             {site.headline}
           </h1>
           <p className="mt-6 max-w-[58ch] text-[18px] leading-[1.55] text-muted md:text-[19px]">
-            Third-year Computer Science &amp; Engineering student at UMIB, 9.20 out of 10. By day I build
-            internal systems at Petrol Company, a national fuel retailer. On the side I build websites
-            for small businesses, most recently for a painter in Bavaria.
+            Third-year Computer Science &amp; Engineering student at UMIB. By day I build internal
+            systems at Petrol Company, a national fuel retailer. By night I build websites for small
+            businesses.
           </p>
           <p className="label m-0 mt-5 normal-case tracking-normal">{stackLine}</p>
           <div className="mt-10 md:mt-12">
@@ -118,45 +94,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 01 · What changed */}
-      <Section
-        id="change"
-        index="01"
-        title="What changed"
-        lede="Harald Wicht is a mineralogist who paints. His website was built for neither."
-      >
-        <BeforeAfter
-          priority
-          pairs={kontinuumPairs}
-          caption="kontinuum.biz for Atelier Kontinuum, Balzhausen, Germany. Client work: brief 1 September 2026, live 15 September 2026. Both states captured at the same viewport, nothing retouched."
-        />
-        <div className="mt-8 md:mt-10">
-          <FactsStrip
-            columns={3}
-            facts={[
-              { value: "41 → 1.5 MB", label: "gallery page, every work loaded" },
-              { value: "2 weeks", label: "from brief to launch" },
-              { value: "224 → 0", label: "accessibility violations, axe-core" },
-            ]}
-          />
-        </div>
-        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-          <Link href="/work/kontinuum" className="proof">
-            Read the Kontinuum case <ArrowRight />
-          </Link>
-          <a href="https://kontinuum.biz" className="proof" target="_blank" rel="noopener">
-            kontinuum.biz <ArrowUpRight />
-          </a>
-        </div>
-      </Section>
-
-      {/* 02 · Work */}
+      {/* 01 · Work */}
       <Section
         id="work"
-        index="02"
+        index="01"
         title="Work"
-        lede="Three things that changed something for someone, and a list of smaller ones."
-        className="mt-16 md:mt-24"
       >
         <Ledger />
         <div className="mt-10 md:mt-14">
@@ -164,22 +106,8 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 03 · Now */}
-      <Section id="now" index="03" title="Now" lede="September 2026." className="mt-16 md:mt-24">
-        <dl className="m-0 grid gap-x-8 gap-y-1.5 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-y-5">
-          {now.map((n) => (
-            <Fragment key={n.when}>
-              <dt className="font-mono text-[13px] text-muted-2 tnum">{n.when}</dt>
-              <dd className="m-0 mb-3 max-w-[62ch] text-[16px] leading-relaxed text-ink md:mb-0">
-                {n.what}
-              </dd>
-            </Fragment>
-          ))}
-        </dl>
-      </Section>
-
-      {/* 04 · Background */}
-      <Section id="background" index="04" title="Background" className="mt-16 md:mt-24">
+      {/* 02 · Background */}
+      <Section id="background" index="02" title="Background" className="mt-16 md:mt-24">
         <div className="space-y-10 md:space-y-12">
           <Block label="Experience">
             <ul className="m-0 list-none p-0">
@@ -225,7 +153,7 @@ export default function Home() {
             </ul>
           </Block>
 
-          <Block label="Credentials">
+          <Block label="Certifications">
             <ul className="m-0 list-none p-0">
               {credentials.map((c) => (
                 <li
@@ -244,21 +172,22 @@ export default function Home() {
 
           <Block label="How I work">
             <p className="m-0 max-w-[60ch] text-[16px] leading-[1.65] text-ink">
-              Most of what I have built started as someone&rsquo;s spreadsheet. I like to sit with the
-              person who owns the problem before I touch the code, and I like handing over something
-              they can run. TypeScript most days, Python when there is data, Claude beside me for all
-              of it, and I read everything it writes before it ships. Albanian and English.
+              Most of what I build replaces something a person is already doing by hand. So I spend
+              time with whoever owns that problem before I write anything: the requirements that
+              matter are rarely the ones in the brief. Then I build the thing they can run without
+              me, and I write the handover as carefully as the code. TypeScript most days, Python
+              when there is data.
             </p>
           </Block>
         </div>
       </Section>
 
-      {/* 05 · Contact */}
+      {/* 03 · Contact */}
       <Section
         id="contact"
-        index="05"
+        index="03"
         title="Write to me"
-        lede="Hiring for 2027, or have a website that deserves better? Email is the fastest way to reach me. I answer in English or Albanian."
+        lede="Hiring for 2027, or looking at a website that has stopped doing its job? Both are good reasons to write."
         className="mt-16 pb-20 md:mt-24 md:pb-28"
       >
         <dl className="m-0 grid gap-x-8 gap-y-1.5 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-y-4">
