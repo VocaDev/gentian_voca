@@ -462,9 +462,22 @@
   }
 }
 
+/* With motion off the card never rotates, so the whole 3D rendering context is dead
+   weight -- and on some Chrome/GPU combinations an absolutely positioned image inside
+   it silently fails to paint, which leaves the card blank. Tear the context down. */
 @media (prefers-reduced-motion: reduce) {
+  .flip {
+    perspective: none;
+  }
+
   .flip__rotor {
     transform: none;
     transition: none;
+    transform-style: flat;
+  }
+
+  .flip__face {
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
   }
 }

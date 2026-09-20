@@ -106,7 +106,7 @@ export function BeforeAfter({
     const shot = pair[side];
     const isBefore = side === "before";
     return (
-      <div className={`flip__face bg-plate ${isBefore ? "flip__face--back" : ""} flex h-full w-full flex-col`}>
+      <div className={`flip__face bg-plate ${isBefore && !reduced ? "flip__face--back" : ""} flex h-full w-full flex-col`}>
         <div className="flex shrink-0 items-center justify-between gap-3 px-3 py-2 md:px-4">
           <span className="label">{isBefore ? "Before" : "After"}</span>
           <span className="flex items-center gap-3">
