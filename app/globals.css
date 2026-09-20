@@ -93,6 +93,32 @@
   a {
     color: inherit;
   }
+  /* Interactive things always show the hand; UI chrome never shows a text caret. */
+  a[href],
+  button,
+  summary,
+  [role="button"] {
+    cursor: pointer;
+  }
+  header nav a,
+  .label,
+  .segmented label,
+  .logoloop,
+  .line-menu {
+    user-select: none;
+  }
+  header,
+  h1,
+  h2,
+  h3 {
+    cursor: default;
+  }
+  header a[href],
+  h1 a[href],
+  h2 a[href],
+  h3 a[href] {
+    cursor: pointer;
+  }
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;

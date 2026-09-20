@@ -24,6 +24,11 @@ import {
   SiVercel,
   SiRender,
   SiVite,
+  SiBootstrap,
+  SiFigma,
+  SiNetlify,
+  SiNpm,
+  SiClaude,
 } from "react-icons/si";
 import { LogoLoop, type LogoItem } from "./LogoLoop";
 
@@ -52,6 +57,11 @@ const tech: LogoItem[] = [
   { node: <SiVercel />, title: "Vercel", href: "https://vercel.com" },
   { node: <SiRender />, title: "Render", href: "https://render.com" },
   { node: <SiVite />, title: "Vite", href: "https://vite.dev" },
+  { node: <SiNpm />, title: "npm", href: "https://www.npmjs.com" },
+  { node: <SiBootstrap />, title: "Bootstrap", href: "https://getbootstrap.com" },
+  { node: <SiNetlify />, title: "Netlify", href: "https://www.netlify.com" },
+  { node: <SiFigma />, title: "Figma", href: "https://www.figma.com" },
+  { node: <SiClaude />, title: "Claude", href: "https://claude.com" },
 ];
 
 /**

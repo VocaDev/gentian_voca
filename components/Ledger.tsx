@@ -63,11 +63,13 @@ export function SmallerThings() {
             key={t.title}
             className="grid gap-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_auto] md:gap-6"
           >
-            <p className="m-0 text-[15px] leading-relaxed">
-              <span className="font-medium text-ink">{t.title}</span>
-              <span className="font-mono text-[12px] text-muted-2 tnum"> · {t.year}</span>
-              <span className="text-muted"> · {t.line}</span>
-            </p>
+            <div className="min-w-0">
+              <p className="m-0 text-[15px] leading-snug">
+                <span className="font-medium text-ink">{t.title}</span>
+                <span className="font-mono text-[12px] text-muted-2 tnum"> · {t.year}</span>
+              </p>
+              <p className="m-0 mt-1 max-w-[70ch] text-[13.5px] leading-relaxed text-muted">{t.line}</p>
+            </div>
             {t.link ? (
               <a href={t.link.href} className="proof self-start" target="_blank" rel="noopener">
                 {t.link.label} <ArrowUpRight />

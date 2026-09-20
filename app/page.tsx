@@ -130,19 +130,19 @@ export default function Home() {
               {experience.map((e) => (
                 <li
                   key={e.org}
-                  className="grid gap-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_12rem] md:gap-6"
+                  className="grid gap-x-6 gap-y-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_11rem]"
                 >
-                  <div>
-                    <p className="m-0 text-[15px] leading-snug">
-                      <span className="font-medium text-ink">{e.role}</span>
-                      <span className="text-muted">, {e.org}</span>
-                    </p>
-                    <p className="m-0 mt-1.5 max-w-[62ch] text-[13.5px] leading-relaxed text-muted">{e.note}</p>
-                  </div>
-                  <p className="m-0 font-mono text-[12px] leading-relaxed text-muted-2 tnum md:text-right">
+                  <p className="m-0 text-[15px] leading-snug md:col-start-1 md:row-start-1">
+                    <span className="font-medium text-ink">{e.role}</span>
+                    <span className="text-muted">, {e.org}</span>
+                  </p>
+                  <p className="m-0 font-mono text-[12px] leading-relaxed text-muted-2 tnum md:col-start-2 md:row-start-1 md:row-span-2 md:text-right">
                     {e.when}
-                    <br />
-                    {e.where}
+                    <span className="md:hidden"> · </span>
+                    <span className="md:block">{e.where}</span>
+                  </p>
+                  <p className="m-0 mt-0.5 max-w-[62ch] text-[13.5px] leading-relaxed text-muted md:col-start-1 md:row-start-2">
+                    {e.note}
                   </p>
                 </li>
               ))}
@@ -154,17 +154,21 @@ export default function Home() {
               {education.map((e) => (
                 <li
                   key={e.org}
-                  className="grid gap-x-4 gap-y-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[auto_minmax(0,1fr)_12rem] md:gap-6"
+                  className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[auto_minmax(0,1fr)_11rem] md:gap-x-6"
                 >
-                  <InstitutionMark src={e.logo} name={e.org} monogram={e.monogram} />
-                  <div>
-                    <p className="m-0 text-[15px] leading-snug">
-                      <span className="font-medium text-ink">{e.role}</span>
-                      <span className="text-muted">, {e.org}</span>
-                    </p>
-                    <p className="m-0 mt-1.5 text-[13.5px] text-muted">{e.note}</p>
-                  </div>
-                  <p className="m-0 font-mono text-[12px] leading-relaxed text-muted-2 tnum md:text-right">{e.when}</p>
+                  <span className="row-span-3 md:row-span-3">
+                    <InstitutionMark src={e.logo} name={e.org} monogram={e.monogram} />
+                  </span>
+                  <p className="m-0 text-[15px] leading-snug md:col-start-2 md:row-start-1">
+                    <span className="font-medium text-ink">{e.role}</span>
+                    <span className="text-muted">, {e.org}</span>
+                  </p>
+                  <p className="m-0 font-mono text-[12px] leading-relaxed text-muted-2 tnum md:col-start-3 md:row-start-1 md:text-right">
+                    {e.when}
+                  </p>
+                  <p className="m-0 mt-0.5 text-[13.5px] leading-relaxed text-muted md:col-start-2 md:row-start-2">
+                    {e.note}
+                  </p>
                 </li>
               ))}
             </ul>
@@ -175,7 +179,7 @@ export default function Home() {
               {credentials.map((c) => (
                 <li
                   key={c.what}
-                  className="grid gap-1 border-t border-hairline py-3 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_12rem] md:gap-6"
+                  className="grid gap-x-6 gap-y-0.5 border-t border-hairline py-3 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_11rem]"
                 >
                   <p className="m-0 text-[14px] leading-snug">
                     <span className="text-ink">{c.what}</span>
@@ -204,7 +208,7 @@ export default function Home() {
         id="contact"
         index="03"
         title="Write to me"
-        lede="Hiring for 2027, or looking at a website that has stopped doing its job? Both are good reasons to write."
+        lede="Hiring for 2027, or looking at a website that has stopped doing its job?"
         className="mt-16 pb-20 md:mt-24 md:pb-28"
       >
         <dl className="m-0 grid gap-x-8 gap-y-1.5 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-y-4">
@@ -235,7 +239,7 @@ export default function Home() {
           <dt className="font-mono text-[13px] text-muted-2">CV</dt>
           <dd className="m-0">
             <a className="link text-[16px]" href={site.links.cv} target="_blank" rel="noopener">
-              PDF, two pages
+              PDF
             </a>
           </dd>
         </dl>

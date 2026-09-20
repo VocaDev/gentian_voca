@@ -177,9 +177,16 @@ export const LogoLoop = memo(function LogoLoop({
 
   const renderLogoItem = (item: LogoItem, key: string) => {
     const content = (
-      <span className="logoloop__node" aria-hidden={!!item.href && !item.ariaLabel}>
-        {item.node}
-      </span>
+      <>
+        <span className="logoloop__node" aria-hidden={!!item.href && !item.ariaLabel}>
+          {item.node}
+        </span>
+        {item.title ? (
+          <span className="logoloop__label glass" aria-hidden="true">
+            {item.title}
+          </span>
+        ) : null}
+      </>
     );
     const itemAriaLabel = item.ariaLabel ?? item.title;
     return (
