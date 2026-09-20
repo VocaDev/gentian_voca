@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 import { Section } from "@/components/Section";
 import { Ledger, SmallerThings } from "@/components/Ledger";
 import { IdentityPlate } from "@/components/IdentityPlate";
-import { TechLoop } from "@/components/TechLoop";
+import { TechGrid } from "@/components/TechGrid";
 import { InstitutionMark } from "@/components/InstitutionMark";
 import { logoIfPresent } from "@/lib/logos";
 
@@ -110,9 +110,9 @@ export default function Home() {
           <div className="mt-9 md:mt-11">
             <IdentityPlate />
           </div>
-        </div>
-        <div className="mt-10 pb-6 md:mt-12 md:pb-8">
-          <TechLoop />
+          <div className="mt-10 md:mt-12">
+            <TechGrid />
+          </div>
         </div>
       </section>
 

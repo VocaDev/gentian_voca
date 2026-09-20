@@ -23,11 +23,6 @@ export function Footer() {
               GitHub
             </a>
           </li>
-          <li>
-            <a className="link" href="/humans.txt">
-              humans.txt
-            </a>
-          </li>
         </ul>
       </div>
     </footer>
