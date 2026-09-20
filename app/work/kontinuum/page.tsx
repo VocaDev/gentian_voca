@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Comparison } from "@/components/Comparison";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { kontinuumPairs } from "@/content/kontinuum";
 import { FactsStrip } from "@/components/FactsStrip";
 import { Figure } from "@/components/Figure";
 import { AnnotatedFigure } from "@/components/AnnotatedFigure";
@@ -8,15 +9,10 @@ import { Quote } from "@/components/Quote";
 import { CaseHeader, CaseNav, CaseSection, Exhibit } from "@/components/Case";
 import { ArrowUpRight } from "@/components/Icons";
 
-import beforeHome from "@/assets/kontinuum-before-home.jpg";
-import afterHome from "@/assets/kontinuum-after-home.jpg";
-import afterPhone from "@/assets/kontinuum-after-phone.jpg";
 import beforeGallery from "@/assets/kontinuum-before-gallery.jpg";
 import afterWerke from "@/assets/kontinuum-after-werke.jpg";
-import afterViewer from "@/assets/kontinuum-after-viewer.jpg";
 import afterWerkePhone from "@/assets/kontinuum-after-werke-phone.jpg";
-import beforeEnglish from "@/assets/kontinuum-before-english.jpg";
-import afterEnglish from "@/assets/kontinuum-after-english.jpg";
+import afterViewer from "@/assets/kontinuum-after-viewer.jpg";
 import adminWerke from "@/assets/kontinuum-admin-werke.jpg";
 import adminEditor from "@/assets/kontinuum-admin-editor.jpg";
 import conceptA from "@/assets/kontinuum-concept-a.jpg";
@@ -77,18 +73,10 @@ export default function KontinuumCase() {
       </Exhibit>
 
       <Exhibit>
-        <Comparison
+        <BeforeAfter
           priority
-          before={{
-            src: beforeHome,
-            alt: "The old kontinuum.biz homepage: an orange script logo on a black bar, a textured photographic background, a short welcome text and a photo of the atelier door.",
-          }}
-          after={{
-            src: afterHome,
-            alt: "The new kontinuum.biz homepage: an off-white page with the Kontinuum wordmark, a serif headline reading Vom Kristall zum Pinselstrich, and a blue painting of quartz crystals.",
-          }}
-          phone={{ src: afterPhone, alt: "The new kontinuum.biz homepage on a phone." }}
-          caption="The homepage, before and after. Same viewport, same browser, nothing retouched."
+          pairs={kontinuumPairs}
+          caption="Four comparisons, all captured at the same viewport: the archived 2015 site and the live one. Click either half to see it full size."
         />
       </Exhibit>
 
@@ -295,22 +283,6 @@ export default function KontinuumCase() {
         </div>
       </Exhibit>
 
-      <Exhibit>
-        <div className="grid gap-6 md:grid-cols-2">
-          <Figure
-            src={beforeEnglish}
-            alt="The old English site: a page titled Nothing Found, Sorry no posts matched your criteria, with an empty sidebar."
-            sizes="(min-width: 1200px) 540px, 100vw"
-            caption="Before: the English site, as visitors found it."
-          />
-          <Figure
-            src={afterEnglish}
-            alt="The new English homepage: From Crystal to Brushstroke, with the same structure as the German page."
-            sizes="(min-width: 1200px) 540px, 100vw"
-            caption="After: every page in English, with the German text kept as he wrote it."
-          />
-        </div>
-      </Exhibit>
 
       <Exhibit>
         <div className="grid gap-6 md:grid-cols-2">

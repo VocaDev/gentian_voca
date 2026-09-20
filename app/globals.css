@@ -166,6 +166,26 @@
   .plate-hover:active {
     transform: scale(0.995);
   }
+  /* An ink plate: for the one piece of work that cannot be photographed. */
+  .plate-ink {
+    background: #17181a;
+    border: 1px solid #2b2d31;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), var(--plate-shadow);
+    color: #f6f4ef;
+  }
+  @media (prefers-color-scheme: dark) {
+    .plate-ink {
+      background: #22242a;
+      border-color: #33363d;
+    }
+  }
+  @media (max-width: 767px) {
+    .plate-ink {
+      border-radius: 10px;
+    }
+  }
+
   .plate-img {
     border-radius: 11px;
   }

@@ -5,9 +5,12 @@ import { useRef, useState, type ReactNode } from "react";
 import { Close, Expand } from "./Icons";
 
 /**
- * A screenshot on a plate that opens large in a native <dialog>.
+ * A screenshot that opens large in a native <dialog>.
  * The page dims and blurs behind it (glass backdrop); the plate rises with a soft spring;
  * a glass caption bar carries the label and the close button. Esc, backdrop or the button closes.
+ *
+ * `bare` drops the plate styling, for images that already sit inside a plate.
+ * `fill` makes the image fill a fixed-aspect cell instead of using its natural height.
  */
 export function ExhibitImage({
   src,
@@ -16,6 +19,10 @@ export function ExhibitImage({
   sizes = "(min-width: 1200px) 1120px, 100vw",
   priority = false,
   phone = false,
+  bare = false,
+  fill = false,
+  fit = "cover",
+  className = "",
   children,
 }: {
   src: StaticImageData;
@@ -24,6 +31,10 @@ export function ExhibitImage({
   sizes?: string;
   priority?: boolean;
   phone?: boolean;
+  bare?: boolean;
+  fill?: boolean;
+  fit?: "cover" | "contain";
+  className?: string;
   children?: ReactNode;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -35,31 +46,37 @@ export function ExhibitImage({
   };
   const hide = () => dialogRef.current?.close();
 
+  const shell = bare
+    ? `relative block w-full overflow-hidden text-left cursor-zoom-in ${fill ? "min-h-0" : ""} ${className}`
+    : `plate plate-hover rise group relative block w-full cursor-zoom-in overflow-hidden text-left ${
+        phone ? "mx-auto max-w-[340px]" : ""
+      } ${className}`;
+
   return (
     <>
-      <button
-        type="button"
-        onClick={show}
-        className={`plate plate-hover rise group relative block w-full cursor-zoom-in overflow-hidden text-left ${
-          phone ? "mx-auto max-w-[340px]" : ""
-        }`}
-        aria-label={`Open larger: ${alt}`}
-      >
+      <button type="button" onClick={show} className={shell} aria-label={`Open larger: ${alt}`}>
         <Image
           src={src}
           alt={alt}
+          fill={fill || undefined}
           sizes={phone ? "340px" : sizes}
           priority={priority}
-          placeholder="blur"
-          className="plate-img block h-auto w-full"
+          placeholder={fill ? undefined : "blur"}
+          className={
+            fill
+              ? `${fit === "contain" ? "object-contain" : "object-cover object-top"}`
+              : "plate-img block h-auto w-full"
+          }
         />
         {children}
-        <span
-          aria-hidden="true"
-          className="glass absolute bottom-3 right-3 hidden h-8 w-8 items-center justify-center rounded-full text-ink opacity-0 transition-opacity duration-[200ms] group-hover:opacity-100 group-focus-visible:opacity-100 md:flex"
-        >
-          <Expand />
-        </span>
+        {bare ? null : (
+          <span
+            aria-hidden="true"
+            className="glass absolute bottom-3 right-3 hidden h-8 w-8 items-center justify-center rounded-full text-ink opacity-0 transition-opacity duration-[200ms] group-hover:opacity-100 group-focus-visible:opacity-100 md:flex"
+          >
+            <Expand />
+          </span>
+        )}
       </button>
 
       <dialog

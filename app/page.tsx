@@ -3,14 +3,12 @@ import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import { site } from "@/content/site";
 import { Section } from "@/components/Section";
-import { Comparison } from "@/components/Comparison";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { kontinuumPairs } from "@/content/kontinuum";
 import { FactsStrip } from "@/components/FactsStrip";
 import { Ledger, SmallerThings } from "@/components/Ledger";
 import { IdentityPlate } from "@/components/IdentityPlate";
 import { ArrowRight, ArrowUpRight } from "@/components/Icons";
-import beforeHome from "@/assets/kontinuum-before-home.jpg";
-import afterHome from "@/assets/kontinuum-after-home.jpg";
-import afterPhone from "@/assets/kontinuum-after-phone.jpg";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -127,23 +125,10 @@ export default function Home() {
         title="What changed"
         lede="Harald Wicht is a mineralogist who paints. His website was built for neither."
       >
-        <Comparison
+        <BeforeAfter
           priority
-          before={{
-            src: beforeHome,
-            alt: "The old kontinuum.biz homepage: an orange script logo on a black bar, a textured photographic background, a short welcome text and a photo of the atelier door.",
-          }}
-          after={{
-            src: afterHome,
-            alt: "The new kontinuum.biz homepage: an off-white page with the Kontinuum wordmark, a serif headline reading Vom Kristall zum Pinselstrich, and a blue painting of quartz crystals.",
-          }}
-          phone={{ src: afterPhone, alt: "The new kontinuum.biz homepage on a phone." }}
-          caption={
-            <>
-              kontinuum.biz for Atelier Kontinuum, Balzhausen, Germany. Before: WordPress 4.4, built in
-              2015. After: rebuilt in two weeks, live since 15 September 2026. Client work.
-            </>
-          }
+          pairs={kontinuumPairs}
+          caption="kontinuum.biz for Atelier Kontinuum, Balzhausen, Germany. Client work: brief 1 September 2026, live 15 September 2026. Both states captured at the same viewport, nothing retouched."
         />
         <div className="mt-8 md:mt-10">
           <FactsStrip

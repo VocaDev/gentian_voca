@@ -3,14 +3,20 @@ import { ledger, petrolBlock, smallerThings } from "@/content/work";
 import { ArrowRight, ArrowUpRight } from "./Icons";
 import { SwapThumb } from "./SwapThumb";
 
-/** The one exhibit that cannot be a screenshot: a typographic plate for confidential work. */
+/**
+ * The one piece of work that cannot be photographed. Rather than leave a hole in the row,
+ * it gets its own object: an ink plate that states the scale and says why there is no screenshot.
+ */
 function Tile() {
   return (
-    <div className="plate flex aspect-[16/10] flex-col justify-between bg-surface-2 p-3.5" aria-hidden="true">
-      <span className="label">Confidential</span>
+    <div className="plate-ink rise flex aspect-[16/10] flex-col justify-between p-3.5" aria-hidden="true">
+      {/* Fixed light values: the plate is ink in both themes, so these must not follow the paper token. */}
+      <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-[#f6f4ef]/60">
+        No screenshot · NDA
+      </span>
       <div>
-        <div className="font-mono text-[34px] leading-none text-ink tnum">30</div>
-        <div className="mt-1.5 text-[12px] leading-snug text-muted-2">retail stations, in daily use</div>
+        <div className="font-mono text-[34px] leading-none tnum">30</div>
+        <div className="mt-1.5 text-[12px] leading-snug text-[#f6f4ef]/65">retail stations, in daily use</div>
       </div>
     </div>
   );
