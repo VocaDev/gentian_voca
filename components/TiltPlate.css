@@ -49,8 +49,8 @@
   .tilt-plate__sheen {
     background: radial-gradient(
       38rem circle at var(--tilt-px, 50%) var(--tilt-py, 50%),
-      rgb(255 255 255 / 0.16) 0%,
-      rgb(255 255 255 / 0.05) 26%,
+      rgb(255 255 255 / 0.26) 0%,
+      rgb(255 255 255 / 0.08) 26%,
       transparent 62%
     );
     mix-blend-mode: plus-lighter;
@@ -64,7 +64,7 @@
 /* Content rides slightly above the surface so the tilt reads as depth. */
 .tilt-plate__content {
   position: relative;
-  transform: translateZ(14px);
+  transform: translateZ(22px);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, type ReactNode } from "react";
 import "./TiltPlate.css";
 
-const MAX_TILT = 3.2; // degrees. The source component uses ~10-20; that reads as a toy.
+const MAX_TILT = 7; // degrees. The source component goes to ~10-20, which warps the text edges.
 const TAU = 0.12; // seconds, exponential smoothing constant
 
 /**
