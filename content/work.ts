@@ -3,7 +3,7 @@ import kontinuumAfter from "@/assets/kontinuum-after-home.jpg";
 import kontinuumBefore from "@/assets/kontinuum-before-home.jpg";
 import lokalwebLanding from "@/assets/lokalweb-landing.jpg";
 
-export type Kind = "Client, paid" | "Side project, parked";
+export type Kind = "Client, paid" | "Side project";
 
 export type LedgerRow = {
   index: string;
@@ -40,9 +40,9 @@ export const ledger: LedgerRow[] = [
     index: "02",
     year: "2025 – 26",
     title: "LokalWeb",
-    kind: "Side project, parked",
+    kind: "Side project",
     change:
-      "A website-as-a-service for Kosovo's small businesses: a five-step wizard and two Claude calls produce a site on its own subdomain. A working prototype, parked for scope.",
+      "A website-as-a-service for Kosovo's small businesses: a five-step wizard and two Claude calls produce a site on its own subdomain. A working prototype, built solo.",
     forWhom: "Solo: product, design, full-stack",
     caseHref: "/work/lokalweb",
     live: { href: "https://lokal-web-one.vercel.app", label: "Landing page" },
@@ -78,7 +78,7 @@ export const smallerThings: SmallThing[] = [
   {
     title: "VocaFolders",
     year: "2024",
-    line: "A browser extension for filing pages into folders. Local-first, no accounts. Unpublished; I use it every day.",
+    line: "A browser extension for filing pages into folders. Local-first, no accounts. Open source, and I use it every day.",
     link: { href: "https://github.com/VocaDev/VocaFolders_Browser_Extension", label: "Code" },
   },
   {

@@ -39,8 +39,7 @@ export function IdentityPlate() {
               className="mt-[5px] h-[7px] w-[7px] shrink-0 rounded-full bg-accent shadow-[0_0_0_3px_color-mix(in_srgb,var(--color-accent)_18%,transparent)]"
             />
             <span>
-              <span className="text-ink">Open to 2027:</span> junior full-stack roles and internships · Kosovo, the
-              EU or remote
+              <span className="text-ink">Open to 2027:</span> junior full-stack roles and internships · Kosovo or abroad
             </span>
           </p>
         </div>
@@ -49,7 +48,7 @@ export function IdentityPlate() {
             Email me
           </a>
           <a href={site.links.cv} className="btn-secondary justify-center" target="_blank" rel="noopener">
-            CV (PDF) <ArrowDown />
+            CV <ArrowDown />
           </a>
         </div>
       </div>

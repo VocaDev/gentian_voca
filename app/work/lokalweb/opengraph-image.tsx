@@ -32,12 +32,12 @@ export default async function OpenGraphImage() {
             width: 620,
           }}
         >
-          <div style={{ fontSize: 22, color: "#5A5852" }}>03 · Side project, parked · 2025 – 2026</div>
+          <div style={{ fontSize: 22, color: "#5A5852" }}>02 · Side project · 2025 – 2026</div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 56, lineHeight: 1.05, letterSpacing: -1.5 }}>LokalWeb</div>
             <div style={{ fontSize: 26, lineHeight: 1.3, color: "#5A5852", marginTop: 14 }}>
               Five questions in Albanian, two Claude calls, one website on its own subdomain. A
-              working prototype, parked for scope.
+              working prototype, built solo.
             </div>
           </div>
           <div style={{ fontSize: 20, color: "#5A5852" }}>Gentian Voca · gentianvoca.vercel.app</div>

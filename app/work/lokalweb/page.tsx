@@ -14,7 +14,7 @@ import siteServices from "@/assets/lokalweb-site-services.jpg";
 
 const title = "LokalWeb: a website-as-a-service for Kosovo’s small businesses";
 const description =
-  "A five-step wizard and two Claude calls turn a business description into a website on its own subdomain, with booking. A working prototype, parked for scope. Solo side project by Gentian Voca.";
+  "A five-step wizard and two Claude calls turn a business description into a website on its own subdomain, with booking. A working prototype, built solo by Gentian Voca.";
 
 export const metadata: Metadata = {
   title,
@@ -29,7 +29,7 @@ export default function LokalWebCase() {
     <article>
       <CaseHeader
         index="02"
-        kind="Side project, parked"
+        kind="Side project"
         year="2025 – 2026"
         title="LokalWeb"
         subtitle="A website-as-a-service for Kosovo’s small businesses"
@@ -43,7 +43,7 @@ export default function LokalWebCase() {
         }
         meta={[
           { label: "Role", value: "Solo: product, design, full-stack" },
-          { label: "Status", value: "Working prototype, parked July 2026" },
+          { label: "Status", value: "Working prototype, built solo" },
           { label: "Stack", value: "Next.js, TypeScript, Supabase, Claude API, Vercel" },
           {
             label: "Live",
@@ -205,17 +205,12 @@ export default function LokalWebCase() {
         <p>
           The core flow works end to end: a barber can describe the shop and get a site on a subdomain
           with services and a booking calendar. The generated output is uneven, and it needs real
-          product work on layouts and copy quality before a paying customer should see it. There are
-          no customers. I parked it in July 2026.
+          product work on layouts and copy before a paying customer should see it.
         </p>
-      </CaseSection>
-
-      <CaseSection title="Why it is parked">
         <p>
-          Work and university both became full-time in 2026, the scope kept growing, and a product
-          like this needs continuous attention or it decays. I chose to park it while it still worked
-          rather than let it die slowly. It is the most ambitious thing I have built alone, and the
-          clearest lesson I have had in scope.
+          Work and university both became full-time in 2026 and the scope kept growing, so active
+          development is on hold. It is the most ambitious thing I have built alone, and the clearest
+          lesson in scope I have had.
         </p>
       </CaseSection>
 
@@ -223,7 +218,7 @@ export default function LokalWebCase() {
         <ul>
           <li>Structured output is the only kind a renderer should trust.</li>
           <li>Scope is a product decision, not a technical one.</li>
-          <li>A prototype that works is worth more parked than half-alive.</li>
+          <li>Stopping while it still works beats letting it decay.</li>
         </ul>
       </CaseSection>
 
