@@ -13,11 +13,14 @@ export function SwapThumb({
   after,
   before,
   alt,
+  eager = false,
 }: {
   href: string;
   after: StaticImageData;
   before?: StaticImageData;
   alt: string;
+  /** The first thumbnail on /work sits above the fold on phones, so it should not wait. */
+  eager?: boolean;
 }) {
   const [showBefore, setShowBefore] = useState(false);
   const on = () => before && setShowBefore(true);
@@ -37,7 +40,8 @@ export function SwapThumb({
         src={after}
         alt=""
         fill
-        sizes="(min-width: 768px) 168px, 100vw"
+        loading={eager ? "eager" : undefined}
+        sizes="(min-width: 768px) 240px, 100vw"
         className={`plate-img object-cover object-top transition-opacity duration-[320ms] ease-[var(--ease-out-soft)] ${
           showBefore ? "opacity-0" : "opacity-100"
         }`}
@@ -48,7 +52,7 @@ export function SwapThumb({
             src={before}
             alt=""
             fill
-            sizes="(min-width: 768px) 168px, 100vw"
+            sizes="(min-width: 768px) 240px, 100vw"
             className={`plate-img object-cover object-top transition-opacity duration-[320ms] ease-[var(--ease-out-soft)] ${
               showBefore ? "opacity-100" : "opacity-0"
             }`}

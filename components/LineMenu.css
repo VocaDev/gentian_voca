@@ -45,6 +45,10 @@
   transform: translateX(calc(var(--effect, 0) * var(--lm-max-shift)));
 }
 
+.line-menu__link[aria-current="page"] {
+  --effect: 1;
+}
+
 .line-menu__link:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;

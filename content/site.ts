@@ -6,8 +6,7 @@ export const site = {
   email: "gentianvoca@gmail.com",
   phone: "+383 49 206 565",
   phoneHref: "tel:+38349206565",
-  headline:
-    "I turn the work people still do by hand into software they use every day.",
+  headline: "I turn manual work into software.",
   description:
     "Software Developer in Mitrovicë, Kosovo. Internal systems for a national fuel retailer by day, websites for small businesses by night. Third-year Computer Science & Engineering at UMIB.",
   links: {
@@ -16,8 +15,8 @@ export const site = {
     github: "https://github.com/VocaDev",
   },
   nav: [
-    { label: "Work", href: "/#work" },
-    { label: "Background", href: "/#background" },
+    { label: "Work", href: "/work" },
+    { label: "Background", href: "/background" },
     { label: "How I work", href: "/#how-i-work" },
     { label: "Contact", href: "/#contact" },
   ],

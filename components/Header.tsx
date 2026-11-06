@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { site } from "@/content/site";
 import { ArrowDown } from "./Icons";
@@ -12,6 +13,7 @@ import { MobileMenu } from "./MobileMenu";
  */
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -30,15 +32,24 @@ export function Header() {
           {site.name}
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
-          {site.nav.map((n) => (
-            <Link
-              key={n.href}
-              href={n.href}
-              className="text-sm text-muted no-underline transition-colors duration-[120ms] hover:text-ink"
-            >
-              {n.label}
-            </Link>
-          ))}
+          {site.nav.map((n) => {
+            // Pages (not anchors) are marked when you are on them or inside them (/work/kontinuum).
+            const isPage = !n.href.includes("#");
+            const here = isPage && pathname === n.href;
+            const inside = isPage && (here || pathname.startsWith(`${n.href}/`));
+            return (
+              <Link
+                key={n.href}
+                href={n.href}
+                aria-current={here ? "page" : undefined}
+                className={`text-sm no-underline transition-colors duration-[120ms] hover:text-ink ${
+                  inside ? "text-ink" : "text-muted"
+                }`}
+              >
+                {n.label}
+              </Link>
+            );
+          })}
         </nav>
         <div className="flex items-center gap-1.5">
           <a href={site.links.cv} className="btn-primary" target="_blank" rel="noopener">

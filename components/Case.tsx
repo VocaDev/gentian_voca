@@ -95,7 +95,7 @@ export function CaseNav({
           <Link href={next.href} className="proof">
             Next: {next.label} <ArrowRight />
           </Link>
-          <Link href="/#work" className="link text-muted">
+          <Link href="/work" className="link text-muted">
             All work
           </Link>
         </div>

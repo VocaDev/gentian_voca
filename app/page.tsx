@@ -1,213 +1,91 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import Link from "next/link";
 import { site } from "@/content/site";
 import { Section } from "@/components/Section";
-import { Ledger, SmallerThings } from "@/components/Ledger";
-import { IdentityPlate } from "@/components/IdentityPlate";
-import { TechGrid } from "@/components/TechGrid";
-import { InstitutionMark } from "@/components/InstitutionMark";
-import { logoIfPresent } from "@/lib/logos";
+import { DeskCard, PhoneCard } from "@/components/ProfileCard";
+import { WorkTiles } from "@/components/WorkTiles";
+import { NowRecord } from "@/components/NowRecord";
+import { ArrowRight } from "@/components/Icons";
+import { TechStack } from "@/components/TechStack";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const experience = [
-  {
-    role: "Software Development & Digitalisation Assistant",
-    org: "Petrol Company",
-    when: "Apr 2026 – present",
-    where: "Fushë Kosovë, Kosovo",
-    logo: logoIfPresent("petrol.png"),
-    monogram: "PC",
-    note: "Internal software used daily by leadership, HQ teams and field managers across a national network of 30+ retail stations. Manual workflows replaced with structured systems running in production, pairing business-process analysis with full-stack development.",
-  },
-  {
-    role: "Freelance web developer",
-    org: "Atelier Kontinuum",
-    when: "Sep 2026 – present",
-    where: "Balzhausen, Germany",
-    logo: logoIfPresent("kontinuum.png"),
-    monogram: "AK",
-    note: "kontinuum.biz: audit, rebuild, migration, and the care that follows.",
-  },
-  {
-    role: "Data Science & Machine Learning intern",
-    org: "TecTigon Academy",
-    when: "Nov 2025 – Feb 2026",
-    where: "Prishtinë, Kosovo",
-    logo: logoIfPresent("tectigon.png"),
-    monogram: "TA",
-    note: "Data cleaning and exploratory analysis with Pandas, a baseline sales-forecasting model, visual reports delivered in agile sprints. Reference letter from the CEO.",
-  },
-];
-
-const education = [
-  {
-    role: "BSc Computer Science & Engineering",
-    org: "University of Mitrovica “Isa Boletini”",
-    when: "2024 – 2027, expected",
-    note: "GPA 9.20 / 10. Third year.",
-    logo: logoIfPresent("umib.png"),
-    monogram: "UM",
-  },
-  {
-    role: "Data Science course",
-    org: "TecTigon Academy, Prishtinë",
-    when: "Oct 2025 – Jan 2026",
-    note: "Python, Pandas and applied data analysis.",
-    logo: logoIfPresent("tectigon.png"),
-    monogram: "TA",
-  },
-  {
-    role: "High school, social sciences",
-    org: "Gjimnazi “Frang Bardhi”, Mitrovicë",
-    when: "2021 – 2024",
-    note: "5.0 / 5.0.",
-    logo: logoIfPresent("frang-bardhi.png"),
-    monogram: "FB",
-  },
-];
-
-const credentials = [
-  { what: "Cambridge English C1 Advanced, grade Excellent", who: "The Cambridge School, Mitrovicë", when: "2023" },
-  { what: "International Cybersecurity Defense Challenge, blue team", who: "RIT Kosovo × Iowa State University", when: "2026" },
-  { what: "DigiCamp & Digital Skills Festival hackathon, MVP award (top 5)", who: "ITP Prizren", when: "2025" },
-  { what: "Python for Data Science", who: "TecTigon Academy", when: "2026" },
-  { what: "Web Design Basics: HTML, CSS, JavaScript", who: "JCoders Academy", when: "2024" },
-];
-
-function Block({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="md:grid md:grid-cols-[7rem_minmax(0,1fr)] md:gap-8">
-      <h3 className="label m-0 text-[10px] md:pt-1">{label}</h3>
-      <div className="mt-3 md:mt-0">{children}</div>
-    </div>
-  );
-}
-
+/**
+ * The homepage says one thing per screen and points to where the detail lives:
+ * /work for every project, /background for the full record.
+ */
 export default function Home() {
   return (
     <>
-      {/* Identity: a statement, then the identity plate as one object */}
+      {/* Identity: one statement, one line, then the card. Phones get the stacked card made to be
+          screenshotted; tablet and desktop get the same card at full width. */}
       <section className="desk-light" aria-labelledby="identity">
-        <div className="container-x pb-14 pt-12 md:pb-20 md:pt-20">
+        <div className="container-x pb-24 pt-14 md:pb-32 md:pt-24">
           <p className="label m-0">
             {site.role} · {site.location}
           </p>
-          <h1
-            id="identity"
-            className="mt-5 max-w-[24ch] text-[clamp(2.25rem,1.55rem+2vw,3.375rem)] font-medium leading-[1.06] tracking-[-0.022em]"
-          >
+          <h1 id="identity" className="display-hero mt-6 max-w-[8.6em] md:mt-8">
             {site.headline}
           </h1>
-          <p className="mt-6 max-w-[58ch] text-[18px] leading-[1.55] text-muted md:text-[19px]">
-            Third-year Computer Science &amp; Engineering student at UMIB.
-            <br />
+          <p className="mt-7 max-w-[50ch] text-[18px] leading-[1.55] text-muted md:mt-9 md:text-[20px]">
             By day I build internal systems @ Petrol Company. By night I build websites for small
             businesses.
           </p>
-          <div className="mt-9 md:mt-11">
-            <IdentityPlate />
-          </div>
-          <div className="mt-10 md:mt-12">
-            <TechGrid />
+          <div className="mt-12 md:mt-16">
+            <div className="md:hidden">
+              <PhoneCard />
+            </div>
+            <div className="hidden md:block">
+              <DeskCard />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 01 · Work */}
-      <Section
-        id="work"
-        index="01"
-        title="Work"
-      >
-        <Ledger />
-        <div className="mt-10 md:mt-14">
-          <SmallerThings />
-        </div>
+      {/* 01 · Work: two pictures, one line each */}
+      <Section id="work" index="01" label="Work" title="Built solo, end to end.">
+        <WorkTiles />
+        <p className="m-0 mt-14 md:mt-16">
+          <Link href="/work" className="more text-[17px]">
+            All work <ArrowRight className="h-4 w-4" />
+          </Link>
+        </p>
       </Section>
 
-      {/* 02 · Background */}
-      <Section id="background" index="02" title="Background" className="mt-16 md:mt-24">
-        <div className="space-y-10 md:space-y-12">
-          <Block label="Experience">
-            <ul className="m-0 list-none p-0">
-              {experience.map((e) => (
-                <li
-                  key={e.org}
-                  className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[auto_minmax(0,1fr)_11rem] md:gap-x-6"
-                >
-                  <span className="row-span-3">
-                    <InstitutionMark src={e.logo} name={e.org} monogram={e.monogram} />
-                  </span>
-                  <p className="m-0 text-[14px] leading-snug md:col-start-2 md:row-start-1">
-                    <span className="font-medium text-ink">{e.role}</span>
-                    <span className="text-muted">, {e.org}</span>
-                  </p>
-                  <p className="m-0 font-mono text-[11px] leading-relaxed text-muted-2 tnum md:col-start-3 md:row-start-1 md:row-span-2 md:text-right">
-                    {e.when}
-                    <span className="md:hidden"> · </span>
-                    <span className="md:block">{e.where}</span>
-                  </p>
-                  <p className="m-0 mt-0.5 max-w-[62ch] text-[13px] leading-relaxed text-muted md:col-start-2 md:row-start-2">
-                    {e.note}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </Block>
+      {/* 02 · Stack: what the work above is built with, named, grouped like the CV */}
+      <Section
+        id="stack"
+        index="02"
+        label="Stack"
+        title="TypeScript most days, Python when there is data."
+        className="mt-28 md:mt-40"
+      >
+        <TechStack />
+      </Section>
 
-          <Block label="Education">
-            <ul className="m-0 list-none p-0">
-              {education.map((e) => (
-                <li
-                  key={e.org}
-                  className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-1 border-t border-hairline py-4 first:border-t-0 first:pt-0 md:grid-cols-[auto_minmax(0,1fr)_11rem] md:gap-x-6"
-                >
-                  <span className="row-span-3 md:row-span-3">
-                    <InstitutionMark src={e.logo} name={e.org} monogram={e.monogram} />
-                  </span>
-                  <p className="m-0 text-[14px] leading-snug md:col-start-2 md:row-start-1">
-                    <span className="font-medium text-ink">{e.role}</span>
-                    <span className="text-muted">, {e.org}</span>
-                  </p>
-                  <p className="m-0 font-mono text-[11px] leading-relaxed text-muted-2 tnum md:col-start-3 md:row-start-1 md:text-right">
-                    {e.when}
-                  </p>
-                  <p className="m-0 mt-0.5 text-[13px] leading-relaxed text-muted md:col-start-2 md:row-start-2">
-                    {e.note}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </Block>
-
-          <Block label="Certifications">
-            <ul className="m-0 list-none p-0">
-              {credentials.map((c) => (
-                <li
-                  key={c.what}
-                  className="grid gap-x-6 gap-y-0.5 border-t border-hairline py-3 first:border-t-0 first:pt-0 md:grid-cols-[minmax(0,1fr)_11rem]"
-                >
-                  <p className="m-0 text-[13.5px] leading-snug">
-                    <span className="text-ink">{c.what}</span>
-                    <span className="text-muted">, {c.who}</span>
-                  </p>
-                  <p className="m-0 font-mono text-[11px] text-muted-2 tnum md:text-right">{c.when}</p>
-                </li>
-              ))}
-            </ul>
-          </Block>
-
-        </div>
+      {/* 03 · Background: where I work and study now, then the rest of the record */}
+      <Section
+        id="background"
+        index="03"
+        label="Background"
+        title="Working while I study."
+        className="mt-28 md:mt-40"
+      >
+        <NowRecord />
+        <p className="m-0 mt-12 md:mt-14">
+          <Link href="/background" className="more text-[17px]">
+            More: internship, courses and certificates <ArrowRight className="h-4 w-4" />
+          </Link>
+        </p>
       </Section>
 
       {/* A full view of one idea, between the record and the invitation */}
       <section
         id="how-i-work"
         aria-labelledby="how-i-work-title"
-        className="mt-16 flex min-h-[100svh] scroll-mt-16 items-center border-t border-hairline py-24 md:mt-24 md:py-32"
+        className="mt-24 flex min-h-[100svh] scroll-mt-16 items-center border-t border-hairline py-24 md:mt-32 md:py-32"
       >
         <div className="container-x">
           <h2 id="how-i-work-title" className="label m-0">
@@ -221,19 +99,17 @@ export default function Home() {
             that matter are rarely the ones in the brief. Then I build the thing they can run without
             me, and I write the handover as carefully as the code.
           </p>
-          <p className="label m-0 mt-8 normal-case tracking-normal md:mt-10">
-            TypeScript most days, Python when there is data.
-          </p>
         </div>
       </section>
 
-      {/* 03 · Contact */}
+      {/* 04 · Contact */}
       <Section
         id="contact"
-        index="03"
-        title="Write to me"
+        index="04"
+        label="Contact"
+        title="Write to me."
         lede="Hiring for 2027, or looking at a website that has stopped doing its job?"
-        className="mt-16 pb-20 md:mt-24 md:pb-28"
+        className="pb-20 md:pb-28"
       >
         <dl className="m-0 grid gap-x-8 gap-y-1.5 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-y-4">
           <dt className="font-mono text-[13px] text-muted-2">Email</dt>

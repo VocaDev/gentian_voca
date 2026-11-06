@@ -3,13 +3,28 @@ import { ledger, smallerThings } from "@/content/work";
 import { ArrowRight, ArrowUpRight } from "./Icons";
 import { SwapThumb } from "./SwapThumb";
 
+/** A " · " list where lines only break between items, so "224 → 0" never splits. */
+function Unbroken({ list }: { list: string }) {
+  const items = list.split(" · ");
+  return (
+    <>
+      {items.map((item, i) => (
+        <span key={item}>
+          <span className="whitespace-nowrap">{item}</span>
+          {i < items.length - 1 ? " · " : null}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export function Ledger() {
   return (
     <ol className="m-0 list-none p-0">
-      {ledger.map((row) => (
+      {ledger.map((row, i) => (
         <li
           key={row.index}
-          className="grid grid-cols-1 gap-4 border-t border-hairline py-7 md:grid-cols-[7rem_168px_minmax(0,1fr)_auto] md:gap-8 md:py-8"
+          className="grid grid-cols-1 gap-4 border-t border-hairline py-7 md:grid-cols-[7rem_240px_minmax(0,1fr)_auto] md:gap-8 md:py-8"
         >
           <div className="flex items-baseline gap-3 font-mono text-[13px] text-muted-2 tnum md:block">
             <span>{row.index}</span>
@@ -17,7 +32,13 @@ export function Ledger() {
           </div>
 
           <div className="md:self-start">
-            <SwapThumb href={row.caseHref} after={row.thumb.src} before={row.thumb.before} alt={row.thumb.alt} />
+            <SwapThumb
+              href={row.caseHref}
+              after={row.thumb.src}
+              before={row.thumb.before}
+              alt={row.thumb.alt}
+              eager={i === 0}
+            />
           </div>
 
           <div className="min-w-0">
@@ -33,9 +54,13 @@ export function Ledger() {
             <p className="mt-2 max-w-[62ch] text-[15px] leading-relaxed text-muted">{row.change}</p>
             <p className="mt-1.5 text-[13px] text-muted-2">{row.forWhom}</p>
             {row.facts ? (
-              <p className="mt-2.5 font-mono text-[12px] leading-relaxed text-muted-2 tnum">{row.facts}</p>
+              <p className="mt-2.5 font-mono text-[12px] leading-relaxed text-muted-2 tnum">
+                <Unbroken list={row.facts} />
+              </p>
             ) : null}
-            <p className="mt-1.5 font-mono text-[12px] leading-relaxed text-muted-2">{row.stack}</p>
+            <p className="mt-1.5 font-mono text-[12px] leading-relaxed text-muted-2">
+              <Unbroken list={row.stack} />
+            </p>
           </div>
 
           <div className="flex gap-5 md:flex-col md:items-end md:gap-2 md:pt-1">

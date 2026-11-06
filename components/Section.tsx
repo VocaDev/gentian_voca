@@ -1,8 +1,16 @@
 import type { ReactNode } from "react";
 
+/**
+ * One idea per screen: a small index label, one large statement, at most one
+ * sentence under it, then the content. Detail lives on its own page, not here.
+ *
+ * The region is named by the label ("Work"), the heading is the statement, so
+ * landmark navigation and heading navigation both make sense to a screen reader.
+ */
 export function Section({
   id,
   index,
+  label,
   title,
   lede,
   children,
@@ -10,32 +18,30 @@ export function Section({
 }: {
   id: string;
   index: string;
-  title: string;
+  label: string;
+  title: ReactNode;
   lede?: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
 }) {
-  const headingId = `${id}-title`;
+  const labelId = `${id}-label`;
   return (
-    <section id={id} aria-labelledby={headingId} className={`scroll-mt-20 ${className}`}>
+    <section id={id} aria-labelledby={labelId} className={`scroll-mt-20 ${className}`}>
       <div className="container-x">
-        <div className="border-t border-hairline pt-7 md:pt-9">
-          <div className="grid gap-4 md:grid-cols-[7rem_minmax(0,1fr)] md:gap-8">
-            <span className="font-mono text-[13px] text-muted-2 tnum md:pt-1" aria-hidden="true">
+        <div className="border-t border-hairline pt-8 md:pt-10">
+          <p className="label m-0 flex gap-4">
+            <span className="tnum" aria-hidden="true">
               {index}
             </span>
-            <div>
-              <h2 id={headingId} className="m-0 text-[22px] font-medium leading-snug tracking-[-0.01em] md:text-[24px]">
-                {title}
-              </h2>
-              {lede ? (
-                <p className="mt-3 max-w-[60ch] text-[17px] leading-[1.6] text-muted md:text-[18px]">
-                  {lede}
-                </p>
-              ) : null}
-            </div>
-          </div>
-          <div className="mt-8 md:mt-10">{children}</div>
+            <span id={labelId}>{label}</span>
+          </p>
+          <h2 className="display-2 mt-8 md:mt-12">{title}</h2>
+          {lede ? (
+            <p className="mt-5 max-w-[52ch] text-[17px] leading-[1.6] text-muted md:mt-6 md:text-[19px]">
+              {lede}
+            </p>
+          ) : null}
+          {children ? <div className="mt-10 md:mt-14">{children}</div> : null}
         </div>
       </div>
     </section>

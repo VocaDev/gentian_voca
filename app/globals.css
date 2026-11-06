@@ -278,6 +278,55 @@
     text-underline-offset: 3px;
   }
 
+  /* ---------- Display type: one statement per screen, set large and tight ---------- */
+  .display-hero {
+    @apply font-medium text-ink;
+    font-size: clamp(3rem, 1.1rem + 7.2vw, 6.75rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+  .display-1 {
+    @apply font-medium text-ink;
+    font-size: clamp(2.75rem, 1.5rem + 5vw, 5.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+  .display-2 {
+    @apply font-medium text-ink;
+    font-size: clamp(2.25rem, 1.35rem + 3.6vw, 4.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  /* "There is more over here": ink, an arrow that leans toward where it goes. */
+  .more {
+    @apply inline-flex items-center gap-1.5 font-medium text-ink no-underline;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 4px;
+  }
+  .more svg {
+    transition: transform 220ms var(--ease-spring);
+  }
+  a.more:hover {
+    text-decoration-line: underline;
+  }
+
+  /* A work tile is one link stretched over picture and text, so the tile reacts as a whole. */
+  @media (hover: hover) {
+    .tile:hover .plate-hover {
+      transform: translateY(-2px);
+      box-shadow: var(--highlight), var(--plate-shadow-hover);
+    }
+    .tile:hover .more svg,
+    a.more:hover svg {
+      transform: translateX(3px);
+    }
+  }
+  .tile:focus-within .plate-hover {
+    box-shadow: var(--highlight), var(--plate-shadow-hover);
+  }
+
   /* ---------- Segmented control: real radios, a sliding ink indicator ---------- */
   .segmented {
     @apply relative m-0 grid p-0.5;

@@ -10,6 +10,8 @@ export type LedgerRow = {
   year: string;
   title: string;
   kind: Kind;
+  /** One line for the homepage tile. The full sentence lives in `change`, on /work. */
+  short: string;
   change: string;
   forWhom: string;
   facts?: string;
@@ -25,6 +27,7 @@ export const ledger: LedgerRow[] = [
     year: "2026",
     title: "Kontinuum",
     kind: "Client, paid",
+    short: "A painter's 2015 WordPress site, rebuilt as a fast bilingual catalogue.",
     change:
       "Rebuilt a painter's 2015 WordPress site as a fast, bilingual catalogue of 81 works, with a zoomable viewer and an editing panel made for the owner.",
     forWhom: "For Harald Wicht, Atelier Kontinuum, Balzhausen, Germany",
@@ -43,6 +46,7 @@ export const ledger: LedgerRow[] = [
     year: "2025 – 26",
     title: "LokalWeb",
     kind: "Side project",
+    short: "A website-as-a-service for Kosovo's small businesses. A working prototype.",
     change:
       "A website-as-a-service for Kosovo's small businesses: a five-step wizard and two Claude calls produce a site on its own subdomain. A working prototype, built solo.",
     forWhom: "Solo: product, design, full-stack",

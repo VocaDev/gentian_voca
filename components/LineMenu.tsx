@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
 import "./LineMenu.css";
 
@@ -25,6 +26,7 @@ export function LineMenu({
   proximityRadius?: number;
   smoothing?: number;
 }) {
+  const pathname = usePathname();
   const listRef = useRef<HTMLUListElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const targets = useRef<number[]>([]);
@@ -101,7 +103,12 @@ export function LineMenu({
             className="line-menu__item"
           >
             <span className="line-menu__marker" aria-hidden="true" />
-            <Link href={item.href} className="line-menu__link" onClick={onNavigate}>
+            <Link
+              href={item.href}
+              className="line-menu__link"
+              aria-current={pathname === item.href ? "page" : undefined}
+              onClick={onNavigate}
+            >
               <span className="line-menu__index" aria-hidden="true">
                 {String(index + 1).padStart(2, "0")}
               </span>

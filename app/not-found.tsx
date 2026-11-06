@@ -18,7 +18,7 @@ export default function NotFound() {
         The page moved, or never existed. The work did.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
-        <Link href="/#work" className="btn-primary">
+        <Link href="/work" className="btn-primary">
           See the work <ArrowRight className="h-3.5 w-3.5 opacity-80" />
         </Link>
         <a href="/cv.pdf" className="btn-secondary" target="_blank" rel="noopener">
