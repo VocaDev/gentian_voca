@@ -30,8 +30,7 @@ export default function Home() {
             {site.headline}
           </h1>
           <p className="mt-7 max-w-[50ch] text-[18px] leading-[1.55] text-muted md:mt-9 md:text-[20px]">
-            By day I build internal systems @ Petrol Company. By night I build websites for small
-            businesses.
+            I build automations and internal software at Petrol Company.
           </p>
           <div className="mt-12 md:mt-16">
             <div className="md:hidden">
@@ -108,7 +107,6 @@ export default function Home() {
         index="04"
         label="Contact"
         title="Write to me."
-        lede="Hiring for 2027, or looking at a website that has stopped doing its job?"
         className="pb-20 md:pb-28"
       >
         <dl className="m-0 grid gap-x-8 gap-y-1.5 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-y-4">

@@ -6,7 +6,7 @@ import { credentials, education, experience } from "@/content/background";
 
 const title = "Background";
 const description =
-  "Experience, education and certificates of Gentian Voca: internal software at Petrol Company, freelance web development, and Computer Science & Engineering at UMIB.";
+  "Experience, education and certificates of Gentian Voca: automations and internal software at Petrol Company, and Computer Science & Engineering at UMIB.";
 
 export const metadata: Metadata = {
   title,
@@ -30,7 +30,7 @@ export default function BackgroundPage() {
     <>
       <PageHeader
         title="Background"
-        lede="I work while I study: internal software at Petrol Company, freelance websites, and year three of Computer Science & Engineering at UMIB."
+        lede="I work while I study: automations and internal software at Petrol Company, and year three of Computer Science & Engineering at UMIB."
       />
 
       <div className="container-x mt-14 space-y-12 md:mt-20 md:space-y-16">

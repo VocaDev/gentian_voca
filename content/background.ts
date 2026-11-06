@@ -30,16 +30,6 @@ export const experience: Entry[] = [
     note: "Internal software used daily by leadership, HQ teams and field managers across a national network of 30+ retail stations. Manual workflows replaced with structured systems running in production, pairing business-process analysis with full-stack development.",
   },
   {
-    role: "Freelance web developer",
-    org: "Atelier Kontinuum",
-    when: "Sep 2026 – present",
-    where: "Balzhausen, Germany",
-    logo: logoIfPresent("kontinuum.png"),
-    monogram: "AK",
-    current: true,
-    note: "kontinuum.biz: audit, rebuild, migration, and the care that follows.",
-  },
-  {
     role: "Data Science & Machine Learning intern",
     org: "TecTigon Academy",
     when: "Nov 2025 – Feb 2026",

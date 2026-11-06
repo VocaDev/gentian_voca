@@ -28,7 +28,7 @@ export default function KontinuumCase() {
     <article>
       <CaseHeader
         index="01"
-        kind="Client, paid"
+        kind="Client project"
         year="September 2026"
         title="Kontinuum"
         subtitle="An atelier website rebuilt for a painter and mineralogist"

@@ -190,25 +190,6 @@
   color: var(--pc-muted);
 }
 
-.profile-card__status {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 13px;
-  line-height: 1.375;
-  color: var(--pc-muted);
-}
-
-.profile-card__dot {
-  flex: none;
-  width: 7px;
-  height: 7px;
-  margin-top: 5px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 22%, transparent);
-}
-
 /* Links already inherit their colour from the site's base layer. Do not add an unlayered
    `a { color }` here: it would beat the buttons' own text colour and blank out "Email me". */
 .profile-card__lines {
@@ -242,10 +223,6 @@
   flex: 1;
   flex-direction: column;
   padding: 14px 18px 6px 32px;
-}
-
-.profile-card--wide .profile-card__status {
-  font-size: 14px;
 }
 
 /* With motion off nothing tilts, so drop the 3D context entirely: on some GPUs an image

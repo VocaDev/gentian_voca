@@ -32,7 +32,7 @@ export default async function OpenGraphImage() {
             width: 620,
           }}
         >
-          <div style={{ fontSize: 22, color: "#5A5852" }}>01 · Client, paid · 2026</div>
+          <div style={{ fontSize: 22, color: "#5A5852" }}>01 · Client project · 2026</div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 56, lineHeight: 1.05, letterSpacing: -1.5 }}>Kontinuum</div>
             <div style={{ fontSize: 26, lineHeight: 1.3, color: "#5A5852", marginTop: 14 }}>

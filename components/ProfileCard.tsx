@@ -12,11 +12,12 @@ import "./ProfileCard.css";
  * The identity card. Built on React Bits <ProfileCard> (reactbits.dev), chosen on 6 Nov 2026
  * over <ReflectiveCard> in a side-by-side comparison.
  *
- *   PhoneCard: the stacked card exactly as approved. Photo with name and title, availability,
- *              and four contact lines as plain text, so a screenshot of it is a business card.
- *   DeskCard:  the same material at full width under the headline. Photo left; the full record
- *              right (role, freelance, place and local time, availability); email, site and
- *              the two actions along the bottom.
+ *   PhoneCard: the stacked card. Photo with name and title, then four contact lines as plain
+ *              text, so a screenshot of it is a business card.
+ *   DeskCard:  the same material at full width under the headline. Photo left; right: the job,
+ *              the degree, place and local time; email, site and the two actions along the bottom.
+ *
+ * No availability line and no side work on either card (6 Nov 2026): Genti is staying.
  *
  * Motion: the card tilts toward the pointer (or a dragging finger), a light follows it and the
  * photo shifts a few pixels. Under prefers-reduced-motion there is no tilt, no shift, no intro,
@@ -219,13 +220,7 @@ export function PhoneCard() {
         </div>
 
         <div className="profile-card__custom">
-          <p className="profile-card__status m-0">
-            <span className="profile-card__dot" aria-hidden="true" />
-            <span>
-              <span className="profile-card__ink">Open to work from 2027</span>, Kosovo or abroad
-            </span>
-          </p>
-          <ul className="profile-card__lines m-0 mt-3 list-none p-0 pt-3 text-[14px]">
+          <ul className="m-0 list-none p-0 pt-1 text-[14px]">
             <li>
               <a className={line} href={`mailto:${site.email}`}>
                 {site.email}
@@ -290,16 +285,11 @@ export function DeskCard() {
             <p className="profile-card__ink m-0 text-[19px] font-medium leading-snug tracking-[-0.01em]">
               Software Development &amp; Digitalisation Assistant, Petrol Company
             </p>
-            <p className="profile-card__muted m-0 mt-1.5 text-[16px] leading-snug">Freelance web developer</p>
+            <p className="profile-card__muted m-0 mt-1.5 text-[16px] leading-snug">
+              Third-year Computer Science &amp; Engineering, UMIB
+            </p>
             <p className="profile-card__muted m-0 mt-5 text-[14px] leading-snug">
               {site.location} · <LocalTime />
-            </p>
-            <p className="profile-card__status m-0 mt-3">
-              <span className="profile-card__dot" aria-hidden="true" />
-              <span>
-                <span className="profile-card__ink">Open to 2027:</span> junior full-stack roles and internships
-                · Kosovo or abroad
-              </span>
             </p>
           </div>
 

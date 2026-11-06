@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { site } from "@/content/site";
 
 export const dynamic = "force-static";
-export const alt = "Gentian Voca, software developer in Mitrovicë, Kosovo";
+export const alt = "Gentian Voca, full-stack developer in Mitrovicë, Kosovo";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -34,7 +34,7 @@ export default async function OpenGraphImage() {
           }}
         >
           <div style={{ fontSize: 22, color: "#5A5852" }}>
-            {`${site.name} · Software developer · Mitrovicë, Kosovo`}
+            {`${site.name} · Full-stack developer · Mitrovicë, Kosovo`}
           </div>
           <div style={{ fontSize: 46, lineHeight: 1.15, letterSpacing: -1 }}>{site.headline}</div>
           <div style={{ fontSize: 20, color: "#5A5852" }}>gentianvoca.vercel.app</div>

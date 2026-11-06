@@ -3,7 +3,7 @@ import kontinuumAfter from "@/assets/kontinuum-after-home.jpg";
 import kontinuumBefore from "@/assets/kontinuum-before-home.jpg";
 import lokalwebLanding from "@/assets/lokalweb-landing.jpg";
 
-export type Kind = "Client, paid" | "Side project";
+export type Kind = "Client project" | "Side project";
 
 export type LedgerRow = {
   index: string;
@@ -26,7 +26,7 @@ export const ledger: LedgerRow[] = [
     index: "01",
     year: "2026",
     title: "Kontinuum",
-    kind: "Client, paid",
+    kind: "Client project",
     short: "A painter's 2015 WordPress site, rebuilt as a fast bilingual catalogue.",
     change:
       "Rebuilt a painter's 2015 WordPress site as a fast, bilingual catalogue of 81 works, with a zoomable viewer and an editing panel made for the owner.",

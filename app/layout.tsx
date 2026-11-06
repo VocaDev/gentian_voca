@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
   preload: false,
 });
 
-const title = `${site.name} · Software Developer, Mitrovicë`;
+const title = `${site.name} · ${site.role}, Mitrovicë`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -36,12 +36,12 @@ export const metadata: Metadata = {
   creator: site.name,
   keywords: [
     "Gentian Voca",
-    "software developer Kosovo",
+    "full-stack developer Kosovo",
     "full-stack developer Mitrovicë",
     "Next.js developer",
     "TypeScript",
     "Supabase",
-    "web developer for small businesses",
+    "business process automation",
   ],
   openGraph: {
     type: "website",
@@ -75,7 +75,7 @@ const jsonLd = {
       "@type": "Person",
       "@id": `${site.url}/#person`,
       name: site.name,
-      jobTitle: "Software Developer",
+      jobTitle: site.role,
       url: site.url,
       email: `mailto:${site.email}`,
       image: `${site.url}/opengraph-image`,
